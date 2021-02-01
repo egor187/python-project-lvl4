@@ -16,7 +16,7 @@ package-install:
 lint:
 	        poetry run flake8 task_manager --exclude settings.py
 
-test:
-	        poetry run pytest --cov=task_manager/tests -vv --cov-report xml
+# test:
+#	        poetry run pytest --cov=task_manager/tests -vv --cov-report xml
 
 .PHONY: install test lint check build
