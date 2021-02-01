@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'radiant-lowlands-02844.herokuapp.com'
+    'mysterious-reef-49447.herokuapp.com'
 ]
 
 
