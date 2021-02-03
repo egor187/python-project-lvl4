@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 20:50+0300\n"
+"POT-Creation-Date: 2021-02-03 22:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,38 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/index.html:31
+#: task_manager/settings.py:121
+msgid "English"
+msgstr ""
+
+#: task_manager/settings.py:122
+msgid "Russian"
+msgstr ""
+
+#: task_manager/templates/index.html:31
 msgid "Home"
 msgstr "Начало"
 
-#: templates/index.html:32
+#: task_manager/templates/index.html:32
 msgid "Features"
 msgstr "Фишки"
 
-#: templates/index.html:33
+#: task_manager/templates/index.html:33
 msgid "Contact"
 msgstr "Контакты"
+
+#: task_manager/templates/index.html:39
+msgid "Welcome to my FINAL hexlet project"
+msgstr "Приветствую на странице моего ФИНАЛЬНОГО проекта на Хекслет"
+
+#: task_manager/templates/index.html:41
+msgid "Gonna make django app and deploy it in heroku PaaS"
+msgstr "Делаю django-приложение и деплою на платформу Heroku"
+
+#: task_manager/templates/index.html:44
+msgid "What's next"
+msgstr "Что дальше"
+
+#: task_manager/templates/index.html:50
+msgid "Using cover for hexlet task template for"
+msgstr "Используется шаблон 'cover' по заданию Хеклет"
