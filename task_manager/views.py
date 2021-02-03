@@ -1,9 +1,10 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 
 
 def index(request):
-    return HttpResponse("Welcome to last fourth HEXLET project!")
+    return render(request, 'index.html')
 
 
 class Index(TemplateView):
