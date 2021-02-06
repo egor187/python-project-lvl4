@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <title>{% block title %}Login{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css'%}" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    {% block login %}
+    <a class="nav-link" href={% url 'create_user' %}>{% translate "Create new User" %}</a>
+    {% endblock %}
+
+    {% block welcome %}
+    {% if form.errors %}
+    <p>Your username and password doesn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+    	{% if user.is_authenticated %}
+	<p>Your account doesn't have acces to this page. To proceed,
+	please login with account that has access.</p>
+	{% else %}
+	<p>Please login this page.</p>
+	{% endif %}
+    {% endif %}
+
+
+    <form class="form-signin" method="post" action={% url "users:login" %}>
+    {% csrf_token %}
+    <img class="mb-4" src="{% static 'css/bootstrap-solid.svg' %}" alt="" width="72" height="72">
+
+    <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+
+    {{ form.username.lable_tag }}
+    {{ form.username }}
+    
+    {{ form.password.lable_tag }}
+    {{ form.password }}
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Login</button>
+    <input type="hidden" name="next" value="{{ next }}"> 
+    </form>
+
+    <a class="btn-lg btn-primary- btn-block" href={% url 'create' %}>{% translate "Create new user" %}</a>
+
+    <p><a href="{% url 'users:password_reset' %}">Lost password?</a></p>
+    {% endblock %}
+
+  </body>
+</html>

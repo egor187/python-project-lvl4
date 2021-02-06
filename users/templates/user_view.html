@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block welcome %}
+
+<p> {{ object.firstname}} - {{object.lastname}} - {{object.email}} </p>
+
+<a href={% url 'users:update_user' object.id %}>Change account</a>
+<a href={% url 'users:delete_user' object.id %}>Delete account</a>
+
+{% endblock %}
