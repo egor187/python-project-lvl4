@@ -19,4 +19,7 @@ lint:
 test:
 	        poetry run pytest --cov=task_manager/tests -vv --cov-report xml
 
+server:
+		poetry run python3 manage.py runserver
+
 .PHONY: install test lint check build
