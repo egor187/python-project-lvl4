@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="row h-auto">
+    <div class="col-sm-8 mx-auto pt-5">
+        <div class="card">
+            <div class="card-title bg-success text-white p-3">
+                <p class="h4">Profile page</p>
+            </div>
+            <div class="card-body">
+                <p>Email: {{ request.user.email }}</p>
+                <a href="{% url 'accounts:password_change' %}" class="btn btn-success">
+                    Change Password
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

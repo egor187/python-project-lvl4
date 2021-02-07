@@ -1,10 +1,19 @@
 {% extends 'index.html' %}
+{% load bootstrap4 %}
+
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_messages %}
+	{% endblock %}
+{% endif %}
+
 
 {% block welcome %}
 <h1>Users</h1>
 <ul>
 {% for user in object_list %}
-<li><a href={% url 'users:user' user.id %}>{{ user.username }} - {{ user.firstname }} - {{user.lastname}} - {{ user.email }}</a></li>
+<li><a href={% url 'users:user' user.id %}>{{ user.id }} - {{ user.username }} - {{ user.first_name }} - {{user.last_name}} - {{ user.email }}</a></li>
 {% endfor %}
 </ul>
 

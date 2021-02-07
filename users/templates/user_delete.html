@@ -1,8 +1,15 @@
 {% extends 'index.html' %}
+{% load i18n %}
+
 {% block welcome %}
-<form class="form-signin" method="post">
-	{% csrf_token %}
-	<p>Are you sure you want to delete "{{ object.username }}"?</p>
-	<input type="submit" value="Confirm">
-</form>
-{% endblock %}
+    <h1 class="mb-4">{% translate "User deletion" %}</h1>
+
+    <form method="post" action="{% url 'users:delete_user' user.pk %}">
+        {% csrf_token %}
+        <p>{% translate "Are you sure you want to delete" %} {{ user.get_full_name }}?</p>
+        <div class="form-group">
+            <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
+        </div>
+    </form>
+{% endblock welcome %}
+

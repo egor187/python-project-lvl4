@@ -1,10 +1,18 @@
 {% extends 'index.html' %}
+{% load bootstrap4 %}
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_javascript jquery=True %}
+        {% bootstrap_messages %}
+	{% endblock message %}
+{% endif %}
 
 {% block welcome %}
 
-<p> {{ object.firstname}} - {{object.lastname}} - {{object.email}} </p>
+<p> {{ object.username}} - {{object.first_name}} - {{object.last_name}} - {{object.email}} </p>
 
 <a href={% url 'users:update_user' object.id %}>Change account</a>
 <a href={% url 'users:delete_user' object.id %}>Delete account</a>
 
-{% endblock %}
+{% endblock welcome %}

@@ -1,8 +1,15 @@
 {% extends 'index.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+
 {% block welcome %}
-<form class="form-signin" method="post">
-	{% csrf_token %}
-	{{ form.as_p }}
-		<input type="submit" value="Update">
-</form>
+    <h1 class="mb-4">{% translate "Update form" %}</h1>
+
+    <form method="POST" action="{% url 'users:update_user' user.id %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="{% translate 'Register' %}">
+        </div>
+    </form>
 {% endblock %}
