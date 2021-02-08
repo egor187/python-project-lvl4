@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -33,13 +33,6 @@ class UserView(generic.DetailView):
     model = CustomUser
 
 
-class CreateUserView(SuccessMessageMixin, CreateView, FormView):
-    model = CustomUser
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('users:user_list')
-    success_message = '%(username)s was successfully created'
-
-
 class ProfileView(LoginRequiredMixin, generic.DetailView, generic.TemplateView):
     model = CustomUser
     login_url = reverse_lazy('users:profile')
@@ -47,19 +40,24 @@ class ProfileView(LoginRequiredMixin, generic.DetailView, generic.TemplateView):
     next = '/login/%(user.pk)s'
 
 
+class CreateUserView(SuccessMessageMixin, CreateView, FormView):
+    model = CustomUser
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('users:user_list')
+    success_message = '%(username)s was successfully created'
+
+
 class LoginUserView(SuccessMessageMixin, LoginView):
     success_message = '%(username)s was successfully login'
 
 
+class LogoutUserView(SuccessMessageMixin, LogoutView):
+    success_message = '%(username)s was successfully logout'
 
 
-# class CreateUserView(CreateView, FormView):
-#     model = CustomUser
-#     # Форма для регистрации нового пользователя в системе аутентификации
-#     form_class = UserCreationForm
-# #    fields = '__all__'
-#     success_url = '/users/'
-
+class PasswordChangeUserView(SuccessMessageMixin, PasswordChangeView):
+    success_message = 'Password was successfully changed'
+    success_url = reverse_lazy('users:user_list')
 
 
 class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

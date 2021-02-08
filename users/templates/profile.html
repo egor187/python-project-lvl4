@@ -9,8 +9,8 @@
                 <p class="h4">Profile page</p>
             </div>
             <div class="card-body">
-                <p>Email: {{ request.user.email }}</p>
-                <a href="{% url 'accounts:password_change' %}" class="btn btn-success">
+                <p>Email: {{ object.username }}</p>
+                <a href="{% url 'users:password_reset' %}" class="btn btn-success">
                     Change Password
                 </a>
             </div>

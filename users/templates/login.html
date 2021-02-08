@@ -11,6 +11,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    {% block login_link %}
+      <a class="nav-link" href={% url 'users:logout' %}>{% translate "Logout" %}</a>
+    {% endblock login_link %}
 
     <title>{% block title %}Login{% endblock title %}</title>
 
@@ -43,12 +46,12 @@
     {% bootstrap_form form %}
 
     <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Login</button>
-    <input type="text" name="next" value="{{ next }}">
+    <input type="hidden" name="next" value="{{ next }}">
     </form>
 
     <a class="btn-lg btn-primary- btn-block" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
 
-    <p><a href="{% url 'users:password_reset' %}">Lost password?</a></p>
+    <p><a href="{% url 'users:password_change' %}">Lost password?</a></p>
     {% endblock welcome %}
 
   </body>

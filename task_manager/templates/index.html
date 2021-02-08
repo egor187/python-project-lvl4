@@ -29,15 +29,19 @@
           <nav class="nav nav-masthead justify-content-center">
 	    <a class="nav-link active" href={% url 'home' %}>{% translate "Home" %}</a>
 	    <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Users" %}</a>
+              {% block login_link %}
 	    <a class="nav-link" href={% url 'users:login' %}>{% translate "Login" %}</a>
+              {% endblock login_link %}
 	    <a class="nav-link" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="inner cover">
-          {% block message %}
-          {% endblock %}
+
+      {% block message %}
+          {% bootstrap_messages %}
+      {% endblock message %}
 
           {% block welcome %}
 	      <h1 class="cover-heading">{% translate "Welcome to my FINAL hexlet project" %}.</h1>

@@ -9,10 +9,11 @@
 {% endif %}
 
 {% block welcome %}
+<body class="text-center">
+	<p class="lead"> {{ object.username}} - {{object.email}} </p>
 
-<p> {{ object.username}} - {{object.first_name}} - {{object.last_name}} - {{object.email}} </p>
-
-<a href={% url 'users:update_user' object.id %}>Change account</a>
-<a href={% url 'users:delete_user' object.id %}>Delete account</a>
-
+	<a href={% url 'users:update_user' object.id %}>Change account</a>
+	<a href={% url 'users:delete_user' object.id %}>Delete account</a>
+	<a href={% url 'users:password_change' %}>Change password</a>
+</body>
 {% endblock welcome %}
