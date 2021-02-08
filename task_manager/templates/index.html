@@ -27,7 +27,7 @@
         <div class="inner">
           <h3 class="masthead-brand"></h3>
           <nav class="nav nav-masthead justify-content-center">
-	    <a class="nav-link active" href={% url 'index_def_view' %}>{% translate "Home" %}</a>
+	    <a class="nav-link active" href={% url 'home' %}>{% translate "Home" %}</a>
 	    <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Users" %}</a>
 	    <a class="nav-link" href={% url 'users:login' %}>{% translate "Login" %}</a>
 	    <a class="nav-link" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
@@ -44,9 +44,7 @@
 	      <p class="lead">
 	{% translate "Gonna make django app and deploy it in heroku PaaS" %}
 	</p>
-<!--        <p class="lead">-->
-<!--	<a href="#" class="btn btn-lg btn-secondary">{% translate "What's next" %}{% endblock %}</a>-->
-<!--        </p>-->
+          {% endblock welcome %}
       </main>
 
       <footer class="mastfoot mt-auto">
