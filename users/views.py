@@ -9,13 +9,12 @@ from users.models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.core.paginator import Paginator
-from .forms import CustomUserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.shortcuts import redirect
 from .forms import CustomUserCreationForm
-
+from .forms import CustomUserCreationForm
 
 class ListUserView(generic.ListView):
     model = CustomUser
@@ -34,14 +33,23 @@ class UserView(generic.DetailView):
     model = CustomUser
 
 
-class CreateUserView(CreateView, FormView):
+class CreateUserView(SuccessMessageMixin, CreateView, FormView):
+    model = CustomUser
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('users:user_list')
+    success_message = '%(username)s was successfully created'
 
 
-class ProfileView(LoginRequiredMixin, generic.TemplateView):
+class ProfileView(LoginRequiredMixin, generic.DetailView, generic.TemplateView):
+    model = CustomUser
     login_url = reverse_lazy('users:profile')
     template_name = 'profile.html'
+    next = '/login/%(user.pk)s'
+
+
+class LoginUserView(SuccessMessageMixin, LoginView):
+    success_message = '%(username)s was successfully login'
+
 
 
 
@@ -52,10 +60,6 @@ class ProfileView(LoginRequiredMixin, generic.TemplateView):
 # #    fields = '__all__'
 #     success_url = '/users/'
 
-#    def add_user_into_auth(self):
-#        user = User.objects.create_user(self.object)
-#        user.save()
-#        return user
 
 
 class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

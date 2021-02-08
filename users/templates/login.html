@@ -43,7 +43,7 @@
     {% bootstrap_form form %}
 
     <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Login</button>
-    <input type="hidden" name="next" value="{{ next }}">
+    <input type="text" name="next" value="{{ next }}">
     </form>
 
     <a class="btn-lg btn-primary- btn-block" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
