@@ -30,13 +30,11 @@
     {% endblock login %}
 
     {% block welcome %}
-    {% if next %}
-    	{% if user.is_authenticated %}
-	      <p>Your account doesn't have acces to this page. To proceed, please login with account that has access.</p>
-	    {% else %}
-	      <p>Please login this page.</p>
-        {% endif %}
-    {% endif %}
+
+        {% if user.is_authenticated %}
+          <p class="lead">You have already logged in.</p>
+        {% else %}
+
 
     <form class="form-signin" method="post" action={% url "users:login" %}>
     {% csrf_token %}
@@ -52,6 +50,7 @@
     <a class="btn-lg btn-primary- btn-block" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
 
     <p><a href="{% url 'users:password_change' %}">Lost password?</a></p>
+    {% endif %}
     {% endblock welcome %}
 
   </body>

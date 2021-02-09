@@ -33,6 +33,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'mysterious-reef-49447.herokuapp.com',
     '127.0.0.1',
+    'localhost',
+    'testserver',
 ]
 
 
