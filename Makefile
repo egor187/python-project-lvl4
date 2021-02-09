@@ -16,8 +16,14 @@ package-install:
 lint:
 	        poetry run flake8 task_manager --exclude settings.py
 
+shell:
+		poetry run python manage.py shell
+
+# test:
+#	        poetry run pytest --cov=task_manager/tests -vv --cov-report xml
+
 test:
-	        poetry run pytest --cov=task_manager/tests -vv --cov-report xml
+		poetry run python manage.py test
 
 server:
 		poetry run python3 manage.py runserver
