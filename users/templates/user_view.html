@@ -14,9 +14,9 @@
 
 	<a href={% url 'users:update_user' object.id %}>Change account</a>
 	<a href={% url 'users:delete_user' object.id %}>Delete account</a>
-	{% if user.is_authenticated %}
-		<a href={% url 'users:user' object.id %}>View profile</a>
-	{% endif %}
+<!--	{% if user.is_authenticated %}-->
+<!--		<a href={% url 'users:user' object.id %}>View profile</a>-->
+<!--	{% endif %}-->
 	<a href={% url 'users:password_change' %}>Change password</a>
 </body>
 {% endblock welcome %}

@@ -76,6 +76,7 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = 'Profile updated'
     permission_denied_message = 'no permissions for that, nigga!!'
 
+#TODO разобраться с атентификацией!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # Redirect from update_form if pk in request different from page where update_form form
     # def dispatch(self, request, *args, **kwargs):
     #     if kwargs['pk'] != request.user.pk:

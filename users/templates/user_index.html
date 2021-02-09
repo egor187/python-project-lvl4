@@ -11,11 +11,22 @@
 
 {% block welcome %}
 <h1>Users</h1>
-<ul>
-{% for user in object_list %}
-<li><a href={% url 'users:user' user.id %}>{{ user.id }} - {{ user.username }} - {{ user.first_name }} - {{user.last_name}} - {{ user.email }}</a></li>
-{% endfor %}
-</ul>
+
+	{% if user.is_authenticated %}
+		<ul>
+		{% for user in object_list %}
+			<li><a href={% url 'users:user' user.id %}>{{ user.id }} - {{ user.username }} - {{ user.first_name }} - {{user.last_name}} - {{ user.email }}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<ul>
+		{% for user in object_list %}
+			<li>{{ user.id }} - {{ user.username }} - {{ user.first_name }} - {{user.last_name}} - {{ user.email }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+
 
 <div class="pagination">
     <span class="step-links">
