@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'django_hexlet_4',
+#         'NAME': os.getenv('DB_NAME'),
 #         'USER': os.getenv('DB_USER'),
 #         'PASSWORD': os.getenv('DB_PASSWORD'),
 #         'HOST': 'localhost',
@@ -108,11 +108,11 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': 'vagrant',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'NAME': os.getenv('DB_NAME_HEROKU'),
+        'USER': os.getenv('DB_USER_HEROKU'),
+        'PASSWORD': os.getenv('DB_PASSWORD_HEROKU'),
+        'HOST': 'ec2-52-70-135-246.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
