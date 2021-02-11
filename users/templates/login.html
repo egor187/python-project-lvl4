@@ -15,7 +15,7 @@
       <a class="nav-link" href={% url 'users:logout' %}>{% translate "Logout" %}</a>
     {% endblock login_link %}
 
-    <title>{% block title %}Login{% endblock title %}</title>
+    <title>{% block title %}{% translate "Login" %}{% endblock title %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
@@ -32,14 +32,14 @@
     {% block welcome %}
 
         {% if user.is_authenticated %}
-          <p class="lead">You have already logged in.</p>
+          <p class="lead">{% translate "You have already logged in" %}.</p>
         {% else %}
 
 
     <form class="form-signin" method="post" action={% url "users:login" %}>
     {% csrf_token %}
     <img class="mb-4" src="{% static 'css/bootstrap-solid.svg' %}" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+    <h1 class="h3 mb-3 font-weight-normal">{% translate "Please login" %}</h1>
 
     {% bootstrap_form form %}
 
@@ -49,7 +49,7 @@
 
     <a class="btn-lg btn-primary- btn-block" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
 
-    <p><a href="{% url 'users:password_change' %}">Lost password?</a></p>
+    <p><a href="{% url 'users:password_change' %}">{% translate "Lost password?" %}</a></p>
     {% endif %}
     {% endblock welcome %}
 

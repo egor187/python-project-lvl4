@@ -13,6 +13,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.utils.translation import gettext as _
 from .forms import CustomUserUpdateForm
 from .forms import CustomUserCreationForm
 
@@ -33,30 +34,23 @@ class UserView(generic.DetailView):
     model = CustomUser
 
 
-# class ProfileView(LoginRequiredMixin, generic.DetailView, generic.TemplateView):
-#     model = CustomUser
-#     login_url = reverse_lazy('users:profile')
-#     template_name = 'profile.html'
-#     next = '/login/%(user.pk)s'
-
-
 class CreateUserView(SuccessMessageMixin, CreateView, FormView):
     model = CustomUser
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('users:user_list')
-    success_message = '%(username)s was successfully created'
+    success_message = _('%(username)s was successfully created')
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
-    success_message = '%(username)s was successfully login'
+    success_message = _('%(username)s was successfully login')
 
 
 class LogoutUserView(SuccessMessageMixin, LogoutView):
-    success_message = '%(username)s was successfully logout'
+    success_message = _('%(username)s was successfully logout')
 
 
 class PasswordChangeUserView(SuccessMessageMixin, PasswordChangeView):
-    success_message = 'Password was successfully changed'
+    success_message = _('Password was successfully changed')
     success_url = reverse_lazy('users:user_list')
 
 
@@ -72,11 +66,9 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     # form_class = CustomUserUpdateForm
 
     not_owner_redirect_url = reverse_lazy('users:user_list')
-    not_owner_message = 'You are not permitted to this action'
-    success_message = 'Profile updated'
-    permission_denied_message = 'no permissions for that, nigga!!'
+    not_owner_message = _('You are not permitted to this action')
+    success_message = _('Profile updated')
 
-#TODO разобраться с атентификацией!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # Redirect from update_form if pk in request different from page where update_form form
     # def dispatch(self, request, *args, **kwargs):
     #     if kwargs['pk'] != request.user.pk:
@@ -92,8 +84,8 @@ class DeleteUserView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_url = '/users/'
 
     not_owner_redirect_url = reverse_lazy('users:user_list')
-    not_owner_message = 'You are not permitted to this action'
-    no_permissions_message = 'You are not permitted to this action'
+    not_owner_message = _('You are not owner for this action')
+    no_permissions_message = _('You are not permitted to this action')
     success_message = 'Profile deleted'
 
     def handle_no_permission(self):

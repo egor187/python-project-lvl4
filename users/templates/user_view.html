@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% if bootstrap_messages %}
 	{% block message %}
@@ -12,11 +13,11 @@
 <body class="text-center">
 	<p class="lead"> {{ object.username}} - {{object.email}} </p>
 
-	<a href={% url 'users:update_user' object.id %}>Change account</a>
-	<a href={% url 'users:delete_user' object.id %}>Delete account</a>
+	<a href={% url 'users:update_user' object.id %}>{% translate "Change account" %}</a>
+	<a href={% url 'users:delete_user' object.id %}>{% translate "Delete account" %}</a>
 <!--	{% if user.is_authenticated %}-->
 <!--		<a href={% url 'users:user' object.id %}>View profile</a>-->
 <!--	{% endif %}-->
-	<a href={% url 'users:password_change' %}>Change password</a>
+	<a href={% url 'users:password_change' %}>{% translate "Change password" %}</a>
 </body>
 {% endblock welcome %}

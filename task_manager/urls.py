@@ -20,7 +20,7 @@ from task_manager import views
 
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', views.Index.as_view(), name='home'),
     path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
 ]

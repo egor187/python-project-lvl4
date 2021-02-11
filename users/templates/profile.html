@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block welcome %}
 <div class="row h-auto">
@@ -11,7 +12,7 @@
             <div class="card-body">
                 <p>Email: {{ object.username }}</p>
                 <a href="{% url 'users:password_reset' %}" class="btn btn-success">
-                    Change Password
+                    {% translate "Change Password" %}
                 </a>
             </div>
         </div>
