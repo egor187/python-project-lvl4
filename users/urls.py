@@ -4,7 +4,7 @@ from django.views import generic
 from users.models import CustomUser
 from users import views
 
-app_name='users'
+app_name = 'users'
 
 urlpatterns = [
     # path('', include('django.contrib.auth.urls')),
