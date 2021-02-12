@@ -37,7 +37,6 @@ ALLOWED_HOSTS = [
     'testserver',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'task_manager',
     'bootstrap4',
     'users',
+    'tasks',
 ]
 
 MIDDLEWARE = [

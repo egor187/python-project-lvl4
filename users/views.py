@@ -70,12 +70,15 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('Profile updated')
 
     # Redirect from update_form if pk in request different from page where update_form form
-    # def dispatch(self, request, *args, **kwargs):
-    #     if kwargs['pk'] != request.user.pk:
-    #         if self.not_owner_message:
-    #             messages.error(request, self.not_owner_message)
-    #         return redirect(self.not_owner_redirect_url)
-    #     return super().dispatch(request, *args, **kwargs)
+    # URLdispatcher capture <int:pk> as keyword arg (**kwargs) for pass to view (UpdateUserView). So, you may
+    # compare value of kwarg['pk'] (which made by generic ListView from a model in template user_index.html)
+    # with current pk of user in request object - django auth middware add object user to request, so "request.user.pk"
+    # contains pk of currently authenticated user.
+    def dispatch(self, request, *args, **kwargs):
+        if kwargs['pk'] != request.user.pk:
+            messages.error(request, self.not_owner_message)
+            return redirect(self.not_owner_redirect_url)
+        return super().dispatch(request, *args, **kwargs)
 
 
 
