@@ -2,6 +2,7 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
+
 {% if bootstrap_messages %}
 	{% block message %}
 		{% bootstrap_messages %}
@@ -16,4 +17,7 @@
 			<li>{{status.name }}</li>
 		{% endfor %}
 	</ul>
+	<a href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
+	<a href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
+	<a href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
 {% endblock %}

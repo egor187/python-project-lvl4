@@ -8,7 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 class ListStatusesView(generic.ListView):
     model = TaskStatus
-    template_name = 'tasks_index.html'
+    template_name = 'statuses_index.html'
 
 
 

@@ -3,13 +3,13 @@ from users.models import CustomUser
 
 
 class TaskStatus(models.Model):
-    status_choices = [
-        ('new', 'new task'),
-        ('in_work', 'in working'),
-        ('on_testing', 'on testing'),
-        ('finished', 'finished'),
-    ]
-    name = models.CharField(max_length=70, choices=status_choices)
+    # status_choices = [
+    #     ('new', 'new task'),
+    #     ('in_work', 'in working'),
+    #     ('on_testing', 'on testing'),
+    #     ('finished', 'finished'),
+    # ]
+    name = models.CharField(max_length=70)
 
     def __str__(self):
         return self.name
