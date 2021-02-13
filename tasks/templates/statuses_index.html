@@ -14,10 +14,10 @@
 
 	<ul>
 		{% for status in object_list %}
-			<li>{{status.name }}</li>
+			<li>
+				<a href={% url 'tasks:status' status.id %}>{{ status.name }}</a>
+			</li>
 		{% endfor %}
 	</ul>
-	<a href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
-	<a href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
 	<a href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
 {% endblock %}

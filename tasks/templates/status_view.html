@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_javascript jquery=True %}
+        {% bootstrap_messages %}
+	{% endblock message %}
+{% endif %}
+
+{% block welcome %}
+<body class="text-center">
+	<p class="lead"> {{ object.name }}</p>
+
+	<a href={% url 'tasks:update_status' object.id %}>{% translate "Update status" %}</a>
+	<a href={% url 'tasks:delete_status' object.id %}>{% translate "Delete status" %}</a>
+<!--	{% if user.is_authenticated %}-->
+<!--		<a href={% url 'users:user' object.id %}>View profile</a>-->
+<!--	{% endif %}-->
+</body>
+{% endblock welcome %}
