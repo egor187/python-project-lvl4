@@ -15,7 +15,7 @@
 	<ul>
 		{% for task in object_list %}
 			<li>
-				<a href={% url 'tasks:task' task.id %}>{{ task.name }}</a>
+				<a href={% url 'tasks:task' task.id %}>Name: {{ task.name }}. Status: {{ task.task_status }}. Creator: {{ task.creator }}. Assigned to: {{ task.assigned_to }}</a>
 			</li>
 		{% endfor %}
 	</ul>
