@@ -71,21 +71,29 @@ class TaskView(generic.DetailView):
 
 
 class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
-    model = TaskStatus
-    fields = '__all__'
+    model = Task
+    fields = [
+        'name',
+        'description',
+        'task_status',
+        'assigned_to'
+    ]
     template_name = 'task_create_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
     success_message = _('"%(name)s" - task was successfully created')
 
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
 class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     model = Task
     fields = '__all__'
     template_name = 'task_update_form.html'
-    success_url = reverse_lazy('tasks:task_list')
+    success_url = reverse_lazy('tasks:tasks_list')
     success_message = _('"%(name)s" - task was successfully updated')
 
 class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     template_name = 'task_delete_form.html'
-    success_url = reverse_lazy('tasks:task_list')
+    success_url = reverse_lazy('tasks:tasks_list')
     success_message = _('task was successfully deleted')
