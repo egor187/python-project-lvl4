@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import sys
 import os
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
@@ -95,6 +96,13 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+# if testing (sys.argv contain 'test') db settings set to 'local db' sqlite3 and django connect to it to
+# create tables for testings purpose
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
