@@ -17,6 +17,9 @@ class TaskStatus(models.Model):
     def get_absolute_url(self):
         return f'/statuses/{self.id}/'
 
+    class Meta():
+        ordering = ['name']
+
 
 class Task(models.Model):
     name = models.CharField(max_length=50)
