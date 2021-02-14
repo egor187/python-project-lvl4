@@ -28,6 +28,8 @@ class Task(models.Model):
     creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='creator')
     assigned_to = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, related_name='assigned')
 
+    class Meta():
+        ordering = ['name']
 
     def __str__(self):
         return self.name
