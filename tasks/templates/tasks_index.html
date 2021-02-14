@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_messages %}
+	{% endblock %}
+{% endif %}
+
+{% block welcome %}
+	<h1>Tasks</h1>
+
+	<ul>
+		{% for task in object_list %}
+			<li>
+				<a href={% url 'tasks:task' task.id %}>{{ task.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+	<a href={% url 'tasks:create_task' %}>{% translate "Create task" %}</a>
+{% endblock %}

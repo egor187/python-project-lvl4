@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load i18n %}
+
+{% block welcome %}
+    <h1 class="mb-4">{% translate "Task deletion" %}</h1>
+
+    <form method="post" action="{% url 'tasks:delete_task' object.pk %}">
+        {% csrf_token %}
+        <p>{% translate "Are you sure you want to delete" %} {{ object.name }}?</p>
+        <div class="form-group">
+            <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
+        </div>
+    </form>
+{% endblock welcome %}
