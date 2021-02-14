@@ -47,7 +47,6 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView)
     success_url = reverse_lazy('tasks:statuses_list')
     success_message = _('status was successfully deleted')
 
-
     def delete(self, request, *args, **kwargs):
         try:
             result = super().delete(request, *args, **kwargs)
@@ -57,4 +56,36 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView)
         except ProtectedError:
             if self.protected_message:
                 messages.error(request, self.protected_message)
-            return redirect(self.protected_url)
+            # return redirect(self.protected_url)
+            return redirect(self.success_url)
+
+
+class ListTasksView(generic.ListView):
+    model = Task
+    template_name = 'tasks_index.html'
+
+
+class TaskView(generic.DetailView):
+    model = Task
+    template_name = 'task_view.html'
+
+
+class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+    model = TaskStatus
+    fields = '__all__'
+    template_name = 'task_create_form.html'
+    success_url = reverse_lazy('tasks:tasks_list')
+    success_message = _('"%(name)s" - task was successfully created')
+
+
+class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+    model = Task
+    fields = '__all__'
+    template_name = 'task_update_form.html'
+    success_url = reverse_lazy('tasks:task_list')
+    success_message = _('"%(name)s" - task was successfully updated')
+
+class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+    template_name = 'task_delete_form.html'
+    success_url = reverse_lazy('tasks:task_list')
+    success_message = _('task was successfully deleted')
