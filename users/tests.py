@@ -41,7 +41,7 @@ class UserViewTest(TestCase):
         self.assertEqual(response_after_delete.status_code, 200)
         self.assertNotEqual(1, CustomUser.objects.all())
 
-    def test_create_user_within_form_(self):
+    def test_create_user_within_form(self):
         url = '/users/create/'
         response_from_create_form = self.client.get(url)
         self.assertEqual(response_from_create_form.status_code, 200)
