@@ -22,18 +22,23 @@
   </head>
 
   <body class="text-center">
+  <ul class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  {% if user.is_authenticated %}
+    <h4 class="masthead-brand">USER: {{ user }}</h4>
+    <a class="btn btn-primary nav-link" href={% url 'users:logout' %}>{% translate "Logout" %}</a>
+  {% endif %}
+  </ul>
+
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
           <h3 class="masthead-brand"></h3>
           <nav class="nav nav-masthead justify-content-center">
-	    <a class="nav-link active" href={% url 'home' %}>{% translate "Home" %}</a>
-	    <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Users" %}</a>
+	        <a class="nav-link" href={% url 'home' %}>{% translate "Home" %}</a>
+	        <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Users" %}</a>
               {% block login_link %}
-                {% if user.is_authenticated %}
-	              <a class="nav-link" href={% url 'users:logout' %}>{% translate "Logout" %}</a>
-                {% else %}
-                  <a class="nav-link" href={% url 'users:login' %}>{% translate "Login" %}</a>
+                {% if not user.is_authenticated %}
+                    <a class="nav-link" href={% url 'users:login' %}>{% translate "Login" %}</a>
                 {% endif %}
               {% endblock login_link %}
         <a class="nav-link" href={% url 'tasks:statuses_list' %}>{% translate "Statuses" %}</a>
