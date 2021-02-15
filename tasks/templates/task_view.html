@@ -13,8 +13,8 @@
 <body class="text-center">
 	<p class="lead"> {{ object.name }} - {{ object.creator }}</p>
 
-	<a href={% url 'tasks:update_task' object.id %}>{% translate "Update task" %}</a>
-	<a href={% url 'tasks:delete_task' object.id %}>{% translate "Delete task" %}</a>
+	<a class="btn btn-primary" href={% url 'tasks:update_task' object.id %}>{% translate "Update task" %}</a>
+	<a class="btn btn-primary" href={% url 'tasks:delete_task' object.id %}>{% translate "Delete task" %}</a>
 
 </body>
 {% endblock welcome %}
