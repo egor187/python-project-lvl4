@@ -11,8 +11,14 @@
 
 {% block welcome %}
 <body class="text-center">
-	<p class="lead"> {{ object.name }}</p>
-
+	<table border="2" align="center">
+		<tr>
+			<th>Название статуса</th>
+		</tr>
+		<tr>
+			<td><p class="lead"> {{ object.name }}</p></td>
+		</tr>
+	</table>
 	<a class="btn btn-primary" href={% url 'tasks:update_status' object.id %}>{% translate "Update status" %}</a>
 	<a class="btn btn-primary" href={% url 'tasks:delete_status' object.id %}>{% translate "Delete status" %}</a>
 

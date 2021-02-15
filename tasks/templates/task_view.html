@@ -11,8 +11,20 @@
 
 {% block welcome %}
 <body class="text-center">
-	<p class="lead"> {{ object.name }} - {{ object.creator }}</p>
-
+	<table border="2" align="center">
+		<tr>
+			<th>Название задачи</th>
+			<th>Статус задачи</th>
+			<th>Инициатор задачи</th>
+			<th>Исполнитель задачи</th>
+		</tr>
+		<tr>
+			<td><p class="lead"> {{ object.name }}</p></td>
+			<td><p class="lead"> {{ object.task_status }}</p></td>
+			<td><p class="lead"> {{ object.creator }}</p></td>
+			<td><p class="lead"> {{ object.assigned_to }}</p></td>
+		</tr>
+	</table>
 	<a class="btn btn-primary" href={% url 'tasks:update_task' object.id %}>{% translate "Update task" %}</a>
 	<a class="btn btn-primary" href={% url 'tasks:delete_task' object.id %}>{% translate "Delete task" %}</a>
 

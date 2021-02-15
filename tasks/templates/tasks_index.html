@@ -11,14 +11,22 @@
 
 {% block welcome %}
 	<h1>Tasks</h1>
-
-	<ul>
-		{% for task in object_list %}
-			<li>
-				<a href={% url 'tasks:task' task.id %}>Name: {{ task.name }}. Status: {{ task.task_status }}. Creator: {{ task.creator }}. Assigned to: {{ task.assigned_to }}</a>
-			</li>
-		{% endfor %}
-	</ul>
+		<table border="2" align="center">
+			<tr>
+				<th>Название задачи</th>
+				<th>Статус задачи</th>
+				<th>Инициатор задачи</th>
+				<th>Исполнитель задачи</th>
+			</tr>
+			{% for task in object_list %}
+				<tr>
+					<td><a href={% url 'tasks:task' task.id %}>{{ task.name }}</a></td>
+					<td><a href={% url 'tasks:task' task.id %}>{{ task.task_status }}</a></td>
+					<td><a href={% url 'tasks:task' task.id %}>{{ task.creator }}</a></td>
+					<td><a href={% url 'tasks:task' task.id %}>{{ task.assigned_to }}</a></td>
+				</tr>
+			{% endfor %}
+		</table>
 
 	<a class="btn btn-primary" href={% url 'tasks:create_task' %}>{% translate "Create task" %}</a>
 {% endblock %}

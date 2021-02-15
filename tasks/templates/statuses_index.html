@@ -11,13 +11,15 @@
 
 {% block welcome %}
 	<h1>Statuses</h1>
-
-	<ul>
+	<table border="2" align="center">
+		<tr>
+			<th>Название статуса</th>
+		</tr>
 		{% for status in object_list %}
-			<li>
-				<a href={% url 'tasks:status' status.id %}>{{ status.name }}</a>
-			</li>
+			<tr>
+				<td><a href={% url 'tasks:status' status.id %}>{{ status.name }}</a></td>
+			</tr>
 		{% endfor %}
-	</ul>
+	</table>
 	<a class="btn btn-primary" href={% url 'tasks:create_status' %}>{% translate "Create status" %}</a>
 {% endblock %}
