@@ -46,14 +46,16 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView)
     template_name = 'status_delete_form.html'
     success_url = reverse_lazy('tasks:statuses_list')
     success_message = _('status was successfully deleted')
+    protected_message = _("You don't have permissions to delete this status")
 
+    # Override class method for add messages.
     def delete(self, request, *args, **kwargs):
         try:
             result = super().delete(request, *args, **kwargs)
             if self.success_message:
                 messages.success(request, self.success_message)
             return result
-        except ProtectedError:
+        except Exception:
             if self.protected_message:
                 messages.error(request, self.protected_message)
             # return redirect(self.protected_url)
@@ -95,6 +97,20 @@ class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     success_message = _('"%(name)s" - task was successfully updated')
 
 class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+    model = Task
+    fields = [
+        'name'
+    ]
     template_name = 'task_delete_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
     success_message = _('task was successfully deleted')
+    protected_message = _("You don't have permissions to delete this status")
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            result = super().delete(request, *args, **kwargs)
+            messages.success(request, self.success_message)
+            return result
+        except Exception:
+            messages.error(request, self.protected_message)
+        return redirect(self.success_url)
