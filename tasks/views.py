@@ -114,3 +114,57 @@ class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
         except Exception:
             messages.error(request, self.protected_message)
         return redirect(self.success_url)
+
+
+# class ListLabelsView(generic.ListView):
+#     model = Labels
+#     template_name = 'tasks_index.html'
+#
+#
+# class TaskView(generic.DetailView):
+#     model = Task
+#     template_name = 'task_view.html'
+#
+#
+# class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+#     model = Task
+#     fields = [
+#         'name',
+#         'description',
+#         'task_status',
+#         'assigned_to'
+#     ]
+#     template_name = 'task_create_form.html'
+#     success_url = reverse_lazy('tasks:tasks_list')
+#     success_message = _('"%(name)s" - task was successfully created')
+#
+#     # override class-method to achieve auto increment form field "creator" with current autheticated user
+#     def form_valid(self, form):
+#         form.instance.creator = self.request.user # attribute "user" contain current login user by LoginRequiredMixin
+#         return super().form_valid(form)
+#
+# class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+#     model = Task
+#     fields = '__all__'
+#     template_name = 'task_update_form.html'
+#     success_url = reverse_lazy('tasks:tasks_list')
+#     success_message = _('"%(name)s" - task was successfully updated')
+#
+# class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+#     model = Task
+#     fields = [
+#         'name'
+#     ]
+#     template_name = 'task_delete_form.html'
+#     success_url = reverse_lazy('tasks:tasks_list')
+#     success_message = _('task was successfully deleted')
+#     protected_message = _("You don't have permissions to delete this status")
+#
+#     def delete(self, request, *args, **kwargs):
+#         try:
+#             result = super().delete(request, *args, **kwargs)
+#             messages.success(request, self.success_message)
+#             return result
+#         except Exception:
+#             messages.error(request, self.protected_message)
+#         return redirect(self.success_url)
