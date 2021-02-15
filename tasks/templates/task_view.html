@@ -26,7 +26,7 @@
 		</tr>
 	</table>
 	<a class="btn btn-primary" href={% url 'tasks:update_task' object.id %}>{% translate "Update task" %}</a>
-	<a class="btn btn-primary" href={% url 'tasks:delete_task' object.id %}>{% translate "Delete task" %}</a>
+	<a class="btn btn-danger" href={% url 'tasks:delete_task' object.id %}>{% translate "Delete task" %}</a>
 
 </body>
 {% endblock welcome %}
