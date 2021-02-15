@@ -16,4 +16,10 @@ urlpatterns = [
     path('create/', views.CreateTaskView.as_view(), name='create_task'),
     path('<int:pk>/update/', views.UpdateTaskView.as_view(), name='update_task'),
     path('<int:pk>/delete/', views.DeleteTaskView.as_view(), name='delete_task'),
+
+    path('labels/', views.ListLabelsView.as_view(), name='labels_list'),
+    path('labels/<int:pk>/', views.LabelView.as_view(), name='label'),
+    path('labels/create/', views.CreateLabelView.as_view(), name='create_label'),
+    path('labels/<int:pk>/update/', views.UpdateLabelView.as_view(), name='update_label'),
+    path('labels/<int:pk>/delete/', views.DeleteLabelView.as_view(), name='delete_label'),
 ]
