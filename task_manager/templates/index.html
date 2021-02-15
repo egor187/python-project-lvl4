@@ -22,9 +22,9 @@
   </head>
 
   <body class="text-center">
-  <ul class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  <ul>
   {% if user.is_authenticated %}
-    <h4 class="masthead-brand">USER: {{ user }}</h4>
+    <h4>USER: {{ user }}</h4>
     <a class="btn btn-primary nav-link" href={% url 'users:logout' %}>{% translate "Logout" %}</a>
   {% endif %}
   </ul>
@@ -57,8 +57,8 @@
           {% block welcome %}
 	      <h1 class="cover-heading">{% translate "Welcome to my FINAL hexlet project" %}.</h1>
 	      <p class="lead">
-	{% translate "Gonna make django app and deploy it in heroku PaaS" %}
-	</p>
+	        {% translate "Gonna make django app and deploy it in heroku PaaS" %}
+	      </p>
           {% endblock welcome %}
       </main>
       <footer class="mastfoot mt-auto">
