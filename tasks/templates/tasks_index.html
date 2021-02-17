@@ -17,14 +17,19 @@
 				<th>Статус задачи</th>
 				<th>Инициатор задачи</th>
 				<th>Исполнитель задачи</th>
+				<th>Метки</th>
 			</tr>
 			{% for task in object_list %}
 				<tr>
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.name }}</a></td>
-					<td><a href={% url 'tasks:task' task.id %}>{{ task.task_status }}</a></td>
+					<td><a class="badge badge-danger badge-pill p-2" href={% url 'tasks:task' task.id %}>{{ task.task_status }}</a></td>
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.creator }}</a></td>
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.assigned_to }}</a></td>
-				</tr>
+					<td>
+					{% for tag in task.label.all %}
+						<a class="badge badge-info p-2" href={% url 'tasks:task' task.id %}>"{{ tag }}"</a>
+					{% endfor %}
+					</td>
 			{% endfor %}
 		</table>
 

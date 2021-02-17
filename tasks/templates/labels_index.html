@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_messages %}
+	{% endblock %}
+{% endif %}
+
+{% block welcome %}
+	<h1>Labels</h1>
+		<table border="2" align="center">
+			<tr>
+				<th>Название метки</th>
+				<th>Связанные задачи</th>
+			</tr>
+			{% for label in object_list %}
+				<tr>
+					<td><a href={% url 'tasks:label' label.id %}>{{ label.name }}</a></td>
+					<td>
+						{% for task in label.task_set.all %}
+							<a class="badge badge-infop-2" href={% url 'tasks:label' label.id %}>"{{ task }}"</a>
+
+						{% endfor %}
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+
+	<a class="btn btn-primary" href={% url 'tasks:create_label' %}>{% translate "Create label" %}</a>
+{% endblock %}

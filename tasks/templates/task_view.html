@@ -17,12 +17,18 @@
 			<th>Статус задачи</th>
 			<th>Инициатор задачи</th>
 			<th>Исполнитель задачи</th>
+			<th>Метки задачи</th>
 		</tr>
 		<tr>
 			<td><p class="lead"> {{ object.name }}</p></td>
 			<td><p class="lead"> {{ object.task_status }}</p></td>
 			<td><p class="lead"> {{ object.creator }}</p></td>
 			<td><p class="lead"> {{ object.assigned_to }}</p></td>
+			<td>
+				{% for tag in object.label.all %}
+					<span class="badge badge-info p-2">"{{ tag }}"</span>
+				{% endfor %}
+			</td>
 		</tr>
 	</table>
 	<a class="btn btn-primary" href={% url 'tasks:update_task' object.id %}>{% translate "Update task" %}</a>
