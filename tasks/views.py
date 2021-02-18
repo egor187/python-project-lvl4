@@ -72,7 +72,6 @@ class ListTasksView(generic.ListView):
         return context
 
 
-
 class TaskView(generic.DetailView):
     model = Task
     template_name = 'task_view.html'
@@ -80,12 +79,6 @@ class TaskView(generic.DetailView):
 
 class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     model = Task
-    # fields = [
-    #     'name',
-    #     'description',
-    #     'task_status',
-    #     'assigned_to'
-    # ]
     fields = '__all__'
     template_name = 'task_create_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
