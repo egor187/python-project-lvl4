@@ -41,12 +41,12 @@ class CreateUserView(SuccessMessageMixin, CreateView, FormView):
     success_message = _('%(username)s was successfully created')
 
 
-class LoginUserView(SuccessMessageMixin, LoginView):
-    success_message = _('%(username)s was successfully login')
-
-
-class LogoutUserView(SuccessMessageMixin, LogoutView):
-    success_message = _('%(username)s was successfully logout')
+# class LoginUserView(SuccessMessageMixin, LoginView):
+#     success_message = _('%(username)s was successfully login')
+#
+#
+# class LogoutUserView(SuccessMessageMixin, LogoutView):
+#     success_message = _('%(username)s was successfully logout')
 
 
 class PasswordChangeUserView(SuccessMessageMixin, PasswordChangeView):

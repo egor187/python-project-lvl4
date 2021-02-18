@@ -30,3 +30,15 @@ class Index(TemplateView):
         context = super().get_context_data(**kwargs)
         context['num_visits'] = num_visits
         return context
+
+
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.utils.translation import gettext as _
+
+class LoginUserView(SuccessMessageMixin, LoginView):
+    success_message = _('%(username)s was successfully login')
+
+
+class LogoutUserView(SuccessMessageMixin, LogoutView):
+    success_message = _('%(username)s was successfully logout')

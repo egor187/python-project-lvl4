@@ -25,7 +25,7 @@
   <ul>
   {% if user.is_authenticated %}
     <h4>USER: {{ user }}</h4>
-    <a class="btn btn-primary nav-link" href={% url 'users:logout' %}>{% translate "Logout" %}</a>
+    <a class="btn btn-primary nav-link" href={% url 'logout' %}>{% translate "Logout" %}</a>
   {% endif %}
   </ul>
 
@@ -38,7 +38,7 @@
 	        <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Users" %}</a>
               {% block login_link %}
                 {% if not user.is_authenticated %}
-                    <a class="nav-link" href={% url 'users:login' %}>{% translate "Login" %}</a>
+                    <a class="nav-link" href={% url 'login' %}>{% translate "Login" %}</a>
                 {% endif %}
               {% endblock login_link %}
         <a class="nav-link" href={% url 'tasks:statuses_list' %}>{% translate "Statuses" %}</a>

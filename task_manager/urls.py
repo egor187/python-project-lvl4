@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from task_manager import views
 
+app_name = 'task_manager'
 
 urlpatterns = [
     path('', views.Index.as_view(), name='home'),
+    path('login/', views.LoginUserView.as_view(template_name='login.html'), name='login'),
+    path('logout/', views.LogoutUserView.as_view(template_name='login.html'), name='logout'),
     path('users/', include('users.urls')),
     path('tasks/', include('tasks.urls')),
     path('admin/', admin.site.urls),
