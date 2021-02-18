@@ -41,9 +41,9 @@ jobs:
       - name: Lint with flake8
         run: |
           make lint
-      - name: Test with pytest
-        run: |
-          make test
+#       - name: Test with pytest
+#         run: |
+#           make test
           
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.5
