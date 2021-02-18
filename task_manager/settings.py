@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'users',
     'tasks',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,7 @@ ROOT_URLCONF = 'task_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['tasks'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

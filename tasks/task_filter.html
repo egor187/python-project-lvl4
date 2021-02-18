@@ -1,0 +1,4 @@
+
+    {% for obj in filter.qs %}
+    <p>{{ obj.name }} - {{ obj.task_status }} - {{ obj.assigned_to }} - {{ obj.label }}</p>
+    {% endfor %}

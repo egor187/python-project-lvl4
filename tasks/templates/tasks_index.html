@@ -10,6 +10,21 @@
 {% endif %}
 
 {% block welcome %}
+<h1>FILTER</h1>
+<p>
+	<form method="get" class="form">
+		{% csrf_token %}
+		{% bootstrap_form filter.form %}
+		{% bootstrap_button "Filter" button_class="btn-success" %}
+
+		<a href="{% url 'tasks:tasks_list' %}" class="btn btn-success">
+			Clear filters
+		</a>
+		<a href="{% url 'tasks:tasks_list' %}?creator={{request.user.pk}}" class="btn btn-success">
+        	My tasks
+    	</a>
+	</form>
+</p>
 	<h1>Tasks</h1>
 		<table border="2" align="center">
 			<tr>
@@ -19,7 +34,7 @@
 				<th>Исполнитель задачи</th>
 				<th>Метки</th>
 			</tr>
-			{% for task in object_list %}
+			{% for task in filter.qs %}
 				<tr>
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.name }}</a></td>
 					<td><a class="badge badge-danger badge-pill p-2" href={% url 'tasks:task' task.id %}>{{ task.task_status }}</a></td>
@@ -30,6 +45,7 @@
 						<a class="badge badge-info p-2" href={% url 'tasks:task' task.id %}>"{{ tag }}"</a>
 					{% endfor %}
 					</td>
+				</tr>
 			{% endfor %}
 		</table>
 

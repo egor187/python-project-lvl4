@@ -7,6 +7,7 @@ from django.views.generic import edit
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
+from tasks.filters import TaskFilter
 
 
 class ListStatusesView(generic.ListView):
@@ -64,6 +65,12 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView)
 class ListTasksView(generic.ListView):
     model = Task
     template_name = 'tasks_index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(*kwargs)
+        context['filter'] = TaskFilter(self.request.GET)
+        return context
+
 
 
 class TaskView(generic.DetailView):
