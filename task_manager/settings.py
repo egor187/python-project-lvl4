@@ -98,12 +98,8 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME_HEROKU'),
-        'USER': os.getenv('DB_USER_HEROKU'),
-        'PASSWORD': os.getenv('DB_PASSWORD_HEROKU'),
-        'HOST': 'ec2-52-70-135-246.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 # if testing (sys.argv contain 'test') db settings set to 'local db' sqlite3 and django connect to it to
