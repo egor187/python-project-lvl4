@@ -45,13 +45,13 @@ jobs:
 #         run: |
 #           make test
           
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.7.5
-        env:
-          CC_TEST_REPORTER_ID: cc29e3ff4e51d77a2bd2af2291dc351214a088497b4e71d379b5316908f4198e
-        with:
-          coverageCommand: make test
-          debug: true
+#       - name: Test & publish code coverage
+#         uses: paambaati/codeclimate-action@v2.7.5
+#         env:
+#           CC_TEST_REPORTER_ID: cc29e3ff4e51d77a2bd2af2291dc351214a088497b4e71d379b5316908f4198e
+#         with:
+#           coverageCommand: make test
+#           debug: true
 
       - name: Notify deploy to Rollbar
         uses: rollbar/github-deploy-action@1.1.0
