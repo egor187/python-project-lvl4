@@ -82,28 +82,28 @@ class TaskViewTest(TestCase):
         self.assertQuerysetEqual(response_after.context['object_list'], ['<Task: JUMP>', '<Task: RUN>'])
         self.assertContains(response_after, Task.objects.get(name='RUN'))
 
-    def test_update_task(self):
-        task_pk = Task.objects.get(name='JUMP').pk
-        url_for_update = reverse('tasks:update_task', args=(task_pk,))
-        response_for_post = self.client.get(url_for_update)
-        self.assertEqual(response_for_post.status_code, 200)
-        # form = response_for_post.context['form']
-        # data = form.initial
-        # data['name'] = 'JAJA'
-        # self.client.post(url_for_update, data)
-        status = TaskStatus.objects.create(name='test_status')
-        Label.objects.create(name='test_label')
-        label = Label.objects.get(name='test_label')
-        # task = Task.objects.get(name='JAJA')
-        # task.label.add(label)
-        self.client.post(url_for_update, {'name': 'JAJA', 'description': 'test', 'task_status': status, 'creator': 'John', 'assigned_to': 'John'})
-        task = Task.objects.get(name='JAJA')
-        task.label.add(label)
-
-        url_for_check = reverse('tasks:tasks_list')
-        response_for_check = self.client.get(url_for_check)
-        self.assertQuerysetEqual(response_for_check.context['object_list'], ['<Task: JAJA>'])
-        self.assertContains(response_for_check, Task.objects.get(name='JAJA'))
+    # def test_update_task(self):
+    #     task_pk = Task.objects.get(name='JUMP').pk
+    #     url_for_update = reverse('tasks:update_task', args=(task_pk,))
+    #     response_for_post = self.client.get(url_for_update)
+    #     self.assertEqual(response_for_post.status_code, 200)
+    #     # form = response_for_post.context['form']
+    #     # data = form.initial
+    #     # data['name'] = 'JAJA'
+    #     # self.client.post(url_for_update, data)
+    #     status = TaskStatus.objects.create(name='test_status')
+    #     Label.objects.create(name='test_label')
+    #     label = Label.objects.get(name='test_label')
+    #     # task = Task.objects.get(name='JAJA')
+    #     # task.label.add(label)
+    #     self.client.post(url_for_update, {'name': 'JAJA', 'description': 'test', 'task_status': status, 'creator': 'John', 'assigned_to': 'John'})
+    #     task = Task.objects.get(name='JAJA')
+    #     task.label.add(label)
+    #
+    #     url_for_check = reverse('tasks:tasks_list')
+    #     response_for_check = self.client.get(url_for_check)
+    #     self.assertQuerysetEqual(response_for_check.context['object_list'], ['<Task: JAJA>'])
+    #     self.assertContains(response_for_check, Task.objects.get(name='JAJA'))
 
     def test_delete_task(self):
         task_pk = Task.objects.get(name='JUMP').pk
@@ -116,28 +116,28 @@ class TaskViewTest(TestCase):
         self.assertQuerysetEqual(response_for_check.context['object_list'], [])
         self.assertNotEqual(1, len(Task.objects.all()))
 
-    def test_create_task_within_form(self):
-        url = reverse('tasks:create_task')
-        response_from_create_form = self.client.get(url)
-        self.assertEqual(response_from_create_form.status_code, 200)
-
-        Label.objects.create(name='test_label')
-        label = Label.objects.get(name='test_label')
-
-        self.client.post(url, {
-            'name': 'DANCE',
-            'description':'DANCING',
-            'task_status': 'status',
-            'creator': 'John',
-            'assigned_to': 'John',
-            'label': label
-            }
-        )
-
-        response_after_create = self.client.get(reverse('tasks:tasks_list'))
-        self.assertEqual(response_after_create.status_code, 200)
-        self.assertContains(response_after_create, Task.objects.get(name='DANCE'))
-        self.assertQuerysetEqual(response_after_create.context['object_list'], ['<Task: JUMP>', '<Task: DANCE>'])
+    # def test_create_task_within_form(self):
+    #     url = reverse('tasks:create_task')
+    #     response_from_create_form = self.client.get(url)
+    #     self.assertEqual(response_from_create_form.status_code, 200)
+    #
+    #     Label.objects.create(name='test_label')
+    #     label = Label.objects.get(name='test_label')
+    #
+    #     self.client.post(url, {
+    #         'name': 'DANCE',
+    #         'description':'DANCING',
+    #         'task_status': 'status',
+    #         'creator': 'John',
+    #         'assigned_to': 'John',
+    #         'label': label
+    #         }
+    #     )
+    #
+    #     response_after_create = self.client.get(reverse('tasks:tasks_list'))
+    #     self.assertEqual(response_after_create.status_code, 200)
+    #     self.assertContains(response_after_create, Task.objects.get(name='DANCE'))
+    #     self.assertQuerysetEqual(response_after_create.context['object_list'], ['<Task: JUMP>', '<Task: DANCE>'])
 
 
 class LabelViewTest(TestCase):
