@@ -92,14 +92,21 @@ class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     success_message = _('Метка успешно удалена')
     protected_message = _("You don't have permissions to delete this label")
 
+    # solution from stackoverflow (because SuccessMessageMixin works through form_valid(), which is present in
+    # CreateView and UpdateView but not in DeleteView)
     # def delete(self, request, *args, **kwargs):
-    #     try:
-    #         result = super().delete(request, *args, **kwargs)
-    #         messages.success(request, self.success_message)
-    #         return result
-    #     except Exception:
-    #         messages.error(request, self.protected_message)
-    #     return redirect(self.success_url)
+    #     messages.success(self.request, self.success_message)
+    #     return super().delete(request, *args, **kwargs)
+
+    # another solution
+    def delete(self, request, *args, **kwargs):
+        try:
+            result = super().delete(request, *args, **kwargs)
+            messages.success(request, self.success_message)
+            return result
+        except Exception:
+            messages.error(request, self.protected_message)
+        return redirect(self.success_url)
 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
