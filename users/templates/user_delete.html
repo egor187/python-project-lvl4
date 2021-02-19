@@ -2,13 +2,14 @@
 {% load i18n %}
 
 {% block welcome %}
-    <h1 class="mb-4">{% translate "User deletion" %}</h1>
+    <h1 class="mb-4">{% translate "Удаление пользователя" %}</h1>
 
     <form method="post" action="{% url 'users:delete_user' user.pk %}">
         {% csrf_token %}
-        <p>{% translate "Are you sure you want to delete" %} {{ user.get_full_name }}?</p>
+        <p>{% translate "Вы действительно хотите удалить пользователя" %} {{ user.get_full_name }}?</p>
         <div class="form-group">
-            <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
+            <input class="btn btn-danger" type="submit" value="{% translate 'Да, удалить' %}">
+            <a class="btn btn-info" href={% url 'users:update_user' %}>{% translate 'Нет, я передумал' %}"</a>
         </div>
     </form>
 {% endblock welcome %}

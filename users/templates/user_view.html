@@ -13,11 +13,8 @@
 <body class="text-center">
 	<p class="lead"> {{ object.username}} - {{object.email}} </p>
 
-	<a href={% url 'users:update_user' object.id %}>{% translate "Change account" %}</a>
-	<a href={% url 'users:delete_user' object.id %}>{% translate "Delete account" %}</a>
-<!--	{% if user.is_authenticated %}-->
-<!--		<a href={% url 'users:user' object.id %}>View profile</a>-->
-<!--	{% endif %}-->
-	<a href={% url 'users:password_change' %}>{% translate "Change password" %}</a>
+	<a href={% url 'users:update_user' object.id %}>{% translate "Изменить профиль" %}</a>
+	<a href={% url 'users:delete_user' object.id %}>{% translate "Удалить профиль" %}</a>
+	<a href={% url 'users:password_change' %}>{% translate "Изменить пароль" %}</a>
 </body>
 {% endblock welcome %}
