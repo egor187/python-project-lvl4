@@ -74,7 +74,7 @@ class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     fields = '__all__'
     template_name = 'label_create_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('"%(name)s" - label was successfully created')
+    success_message = _('Метка успешно создана')
 
 
 class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
@@ -82,14 +82,14 @@ class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     fields = '__all__'
     template_name = 'label_update_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('"%(name)s" - label was successfully updated')
+    success_message = _('Метка успешно обновлена')
 
 
 class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     model = Label
     template_name = 'label_delete_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('label was successfully deleted')
+    success_message = _('Метка успешно удалена')
     protected_message = _("You don't have permissions to delete this label")
 
     # def delete(self, request, *args, **kwargs):

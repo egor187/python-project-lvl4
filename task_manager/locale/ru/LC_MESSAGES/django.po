@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 17:28+0300\n"
+"POT-Creation-Date: 2021-02-19 17:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,22 +137,41 @@ msgid "%(username)s was successfully logout"
 msgstr "%(username)s был успешно разлогинен"
 
 #: views.py:77
-#, python-format
-msgid "\"%(name)s\" - label was successfully created"
-msgstr "\"%(name)s\" - метка было успешно создана"
+msgid "Метка успешно создана"
+msgstr "Метка успешно создана"
 
 #: views.py:85
-#, python-format
-msgid "\"%(name)s\" - label was successfully updated"
-msgstr "\"%(name)s\" - метка была успешно обновлена"
+msgid "Метка успешно обновлена"
+msgstr "Метка успешно обновлена"
 
 #: views.py:92
-msgid "label was successfully deleted"
+msgid "Метка успешно удалена"
 msgstr "Метка успешно удалена"
 
 #: views.py:93
 msgid "You don't have permissions to delete this label"
 msgstr "У Вас нет необхожимых правт для удаления этой метки"
+
+#, fuzzy
+#~| msgid "label was successfully deleted"
+#~ msgid "Label was successfully created"
+#~ msgstr "Метка успешно создана"
+
+#, fuzzy
+#~| msgid "label was successfully deleted"
+#~ msgid "Label was successfully updated"
+#~ msgstr "Метка успешно обновлена"
+
+#, fuzzy
+#~| msgid "label was successfully deleted"
+#~ msgid "Label was successfully deleted"
+#~ msgstr "Метка успешно удалена"
+
+#~ msgid "\"%(name)s\" - label was successfully created"
+#~ msgstr "\"%(name)s\" - метка было успешно создана"
+
+#~ msgid "\"%(name)s\" - label was successfully updated"
+#~ msgstr "\"%(name)s\" - метка была успешно обновлена"
 
 #~ msgid "Home"
 #~ msgstr "Начало"
