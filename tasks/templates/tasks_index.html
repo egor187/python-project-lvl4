@@ -30,11 +30,12 @@
 	<h1>Tasks</h1>
 		<table border="2" align="center">
 			<tr>
-				<th>Название задачи</th>
+				<th>Имя</th>
 				<th>Статус задачи</th>
 				<th>Инициатор задачи</th>
 				<th>Исполнитель задачи</th>
 				<th>Метки</th>
+				<th>Изменение задачи</th>
 			</tr>
 			{% for task in filter.qs %}
 				<tr>
@@ -47,6 +48,11 @@
 						<a class="badge badge-info p-2" href={% url 'tasks:task' task.id %}>"{{ tag }}"</a>
 					{% endfor %}
 					</td>
+					<td>
+						<a class="badge badge-infop-2" href={% url 'tasks:update_task' task.id %}>Изменить</a>
+						<a class="badge badge-infop-2" href={% url 'tasks:delete_task' task.id %}>Удалить</a>
+					</td>
+
 				</tr>
 			{% endfor %}
 		</table>

@@ -82,7 +82,7 @@ class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     fields = '__all__'
     template_name = 'label_update_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('Метка успешно обновлена')
+    success_message = _('Метка успешно изменена')
 
 
 class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
@@ -130,7 +130,7 @@ class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView)
     ]
     template_name = 'status_update_form.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = _('Статус успешно обновлен')
+    success_message = _('Статус успешно изменен')
 
 
 class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):

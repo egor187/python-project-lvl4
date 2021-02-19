@@ -3,7 +3,7 @@
 {% load bootstrap4 %}
 
 {% block welcome %}
-    <h1 class="mb-4">{% translate "Create new task" %}</h1>
+    <h1 class="mb-4">{% translate "Создать задачу" %}</h1>
 
     <form method="POST" action="{% url 'tasks:create_task' %}">
         {% csrf_token %}
