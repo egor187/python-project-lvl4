@@ -19,11 +19,12 @@
 		{% for status in object_list %}
 			<tr>
 				<td><a href={% url 'status' status.id %}>{{ status.name }}</a></td>
+				<td>
+					<a href={% url 'update_status' status.id %}>Изменить</a>
+					<a href={% url 'delete_status' status.id %}>Удалить</a>
+				</td>
 			</tr>
-			<tr>
-				<td><a href={% url 'update_status' status.id %}>Изменить</a></td>
-				<td><a href={% url 'delete_status' status.id %}>Удалить</a></td>
-			</tr>
+
 		{% endfor %}
 	</table>
 	<a class="btn btn-primary" href={% url 'create_status' %}>{% translate "Создать статус" %}</a>
