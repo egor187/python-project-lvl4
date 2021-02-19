@@ -15,6 +15,7 @@
 			<tr>
 				<th>Название метки</th>
 				<th>Связанные задачи</th>
+				<th>Изменение метки</th>
 			</tr>
 			{% for label in object_list %}
 				<tr>
@@ -24,6 +25,9 @@
 							<a class="badge badge-infop-2" href={% url 'label' label.id %}>"{{ task }}"</a>
 
 						{% endfor %}
+					</td>
+					<td>
+						<a class="badge badge-infop-2" href={% url 'update_label' label.id %}>"Изменить"</a>
 					</td>
 				</tr>
 			{% endfor %}
