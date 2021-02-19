@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 11:52+0300\n"
+"POT-Creation-Date: 2021-02-19 14:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,76 +20,133 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/settings.py:151
+#: settings.py:151
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:152
+#: settings.py:152
 msgid "Russian"
 msgstr "Русский"
 
-#: task_manager/templates/index.html:28 task_manager/templates/login.html:15
+#: templates/index.html:28 templates/login.html:15
 msgid "Разлогиниться"
-msgstr ""
+msgstr "Разлогиниться"
 
-#: task_manager/templates/index.html:37
+#: templates/index.html:37
 msgid "Домой"
-msgstr ""
+msgstr "Домой"
 
-#: task_manager/templates/index.html:38
+#: templates/index.html:38
 msgid "Пользователи"
-msgstr ""
+msgstr "Пользователи"
 
-#: task_manager/templates/index.html:41 task_manager/templates/login.html:18
+#: templates/index.html:41 templates/login.html:18
 msgid "Залогиниться"
-msgstr ""
+msgstr "Залогиниться"
 
-#: task_manager/templates/index.html:44
+#: templates/index.html:44
 msgid "Статусы"
-msgstr ""
+msgstr "Статусы"
 
-#: task_manager/templates/index.html:45
+#: templates/index.html:45
 msgid "Задачи"
-msgstr ""
+msgstr "Задачи"
 
-#: task_manager/templates/index.html:46
+#: templates/index.html:46
 msgid "Метки"
-msgstr ""
+msgstr "Метки"
 
-#: task_manager/templates/index.html:47 task_manager/templates/login.html:29
-#: task_manager/templates/login.html:50
+#: templates/index.html:47 templates/login.html:29 templates/login.html:51
 msgid "Создать нового пользователя"
-msgstr ""
+msgstr "Создать нового пользователя"
 
-#: task_manager/templates/index.html:59
+#: templates/index.html:59
 msgid "Welcome to my FINAL hexlet project"
 msgstr "Приветствую на странице моего ФИНАЛЬНОГО проекта на Хекслет"
 
-#: task_manager/templates/index.html:61
+#: templates/index.html:61
 msgid "Gonna make django app and deploy it in heroku PaaS"
 msgstr "Делаю django-приложение и деплою на платформу Heroku"
 
-#: task_manager/templates/login.html:35
+#: templates/label_create_form.html:6 templates/label_create_form.html:12
+msgid "Создать метку"
+msgstr "Создать метку"
+
+#: templates/label_delete_form.html:5
+msgid "Label deletion"
+msgstr "Удаление метки"
+
+#: templates/label_delete_form.html:9
+msgid "Are you sure you want to delete"
+msgstr "Вы увеерены что хотите удалить"
+
+#: templates/label_delete_form.html:11
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: templates/label_delete_form.html:12
+msgid "No, I change my mind"
+msgstr "Нет, я передумал"
+
+#: templates/label_update_form.html:6
+msgid "Label update form"
+msgstr "Форма обновления метки"
+
+#: templates/label_update_form.html:12
+msgid "Update"
+msgstr "Обновить"
+
+#: templates/label_view.html:30
+msgid "Update label"
+msgstr "Обновоить метку"
+
+#: templates/label_view.html:31
+msgid "Delete label"
+msgstr "Удалить метку"
+
+#: templates/labels_index.html:32
+msgid "Create label"
+msgstr "Создать метку"
+
+#: templates/login.html:35
 msgid "Вы уже залогинились"
-msgstr ""
+msgstr "Вы уже залогинились"
 
-#: task_manager/templates/login.html:42
+#: templates/login.html:42
 msgid "Пожалуйста, залогиньтесь"
-msgstr ""
+msgstr "Пожалуйста, залогиньтесь"
 
-#: task_manager/templates/login.html:52
+#: templates/login.html:53
 msgid "Забыли пароль?"
-msgstr ""
+msgstr "Забыли пароль?"
 
-#: task_manager/views.py:40
+#: views.py:42
 #, python-format
 msgid "%(username)s was successfully login"
-msgstr ""
+msgstr "%(username)s был успешно залогинен"
 
-#: task_manager/views.py:44
+#: views.py:46
 #, python-format
 msgid "%(username)s was successfully logout"
-msgstr ""
+msgstr "%(username)s был успешно разлогинен"
+
+#: views.py:77
+#, python-format
+msgid "\"%(name)s\" - label was successfully created"
+msgstr "\"%(name)s\" - метка было успешно создана"
+
+#: views.py:85
+#, python-format
+msgid "\"%(name)s\" - label was successfully updated"
+msgstr "\"%(name)s\" - метка была успешно обновлена"
+
+#: views.py:92
+msgid "label was successfully deleted"
+msgstr "Метка успешно удалена"
+
+#: views.py:93
+msgid "You don't have permissions to delete this label"
+msgstr "У Вас нет необхожимых правт для удаления этой метки"
 
 #~ msgid "Home"
 #~ msgstr "Начало"
