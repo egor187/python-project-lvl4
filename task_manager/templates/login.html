@@ -12,10 +12,10 @@
     <meta name="author" content="">
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
     {% block login_link %}
-      <a class="nav-link" href={% url 'logout' %}>{% translate "Logout" %}</a>
+      <a class="nav-link" href={% url 'logout' %}>{% translate "Разлогиниться" %}</a>
     {% endblock login_link %}
 
-    <title>{% block title %}{% translate "Login" %}{% endblock title %}</title>
+    <title>{% block title %}{% translate "Залогиниться" %}{% endblock title %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
@@ -26,30 +26,30 @@
 
   <body class="text-center">
     {% block login %}
-    <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Create new User" %}</a>
+    <a class="nav-link" href={% url 'users:user_list' %}>{% translate "Создать нового пользователя" %}</a>
     {% endblock login %}
 
     {% block welcome %}
 
         {% if user.is_authenticated %}
-          <p class="lead">{% translate "You have already logged in" %}.</p>
+          <p class="lead">{% translate "Вы уже залогинились" %}.</p>
         {% else %}
 
 
     <form class="form-signin" method="post" action={% url "login" %}>
     {% csrf_token %}
     <img class="mb-4" src="{% static 'css/bootstrap-solid.svg' %}" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">{% translate "Please login" %}</h1>
+    <h1 class="h3 mb-3 font-weight-normal">{% translate "Пожалуйста, залогиньтесь" %}</h1>
 
     {% bootstrap_form form %}
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Login</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Залогиниться</button>
     <input type="hidden" name="next" value="{{ next }}">
     </form>
 
-    <a class="btn-lg btn-primary- btn-block" href={% url 'users:create_user' %}>{% translate "Create new user" %}</a>
+    <a class="btn-lg btn-primary- btn-block" href={% url 'users:create_user' %}>{% translate "Создать нового пользователя" %}</a>
 
-    <p><a href="{% url 'users:password_change' %}">{% translate "Lost password?" %}</a></p>
+    <p><a href="{% url 'users:password_change' %}">{% translate "Забыли пароль?" %}</a></p>
     {% endif %}
     {% endblock welcome %}
 
