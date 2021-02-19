@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_messages %}
+	{% endblock %}
+{% endif %}
+
+{% block welcome %}
+	<h1>Statuses</h1>
+	<table border="2" align="center">
+		<tr>
+			<th>Название статуса</th>
+			<th>Изменение статуса</th>
+		</tr>
+		{% for status in object_list %}
+			<tr>
+				<td><a href={% url 'status' status.id %}>{{ status.name }}</a></td>
+			</tr>
+			<tr>
+				<td><a href={% url 'update_status' status.id %}>Изменить</a></td>
+				<td><a href={% url 'delete_status' status.id %}>Удалить</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+	<a class="btn btn-primary" href={% url 'create_status' %}>{% translate "Создать статус" %}</a>
+{% endblock %}

@@ -46,7 +46,7 @@ class LogoutUserView(SuccessMessageMixin, LogoutView):
     success_message = _('%(username)s was successfully logout')
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# INSERT USERS_LOGIN/LOGOUT INTO TASK_MANAGER
+# INSERT USERS:LABELS INTO TASK_MANAGER
 from django.shortcuts import render, redirect
 from tasks.models import Task, TaskStatus, Label
 from django.urls import reverse_lazy
@@ -100,3 +100,57 @@ class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     #     except Exception:
     #         messages.error(request, self.protected_message)
     #     return redirect(self.success_url)
+
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# INSERT USERS:LABELS INTO TASK_MANAGER
+class ListStatusesView(generic.ListView):
+    model = TaskStatus
+    template_name = 'statuses_index.html'
+
+
+class StatusView(generic.DetailView):
+    model = TaskStatus
+
+
+class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+    model = TaskStatus
+    fields = [
+        'name',
+    ]
+    template_name = 'status_create_form.html'
+    success_url = reverse_lazy('statuses_list')
+    success_message = _('Статус успешно создан')
+
+
+class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+    model = TaskStatus
+    fields = [
+        'name',
+    ]
+    template_name = 'status_update_form.html'
+    success_url = reverse_lazy('statuses_list')
+    success_message = _('Статус успешно обновлен')
+
+
+class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+    model = TaskStatus
+    fields = [
+        'name',
+    ]
+    template_name = 'status_delete_form.html'
+    success_url = reverse_lazy('statuses_list')
+    success_message = _('Статус успешно удален')
+    protected_message = _("You don't have permissions to delete this status")
+
+    # Override class method for add messages.
+    def delete(self, request, *args, **kwargs):
+        try:
+            result = super().delete(request, *args, **kwargs)
+            if self.success_message:
+                messages.success(request, self.success_message)
+            return result
+        except Exception:
+            if self.protected_message:
+                messages.error(request, self.protected_message)
+            return redirect(self.success_url)

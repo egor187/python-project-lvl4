@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 18:13+0300\n"
+"POT-Creation-Date: 2021-02-19 18:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,8 @@ msgstr "Делаю django-приложение и деплою на платфо
 msgid "Создать метку"
 msgstr "Создать метку"
 
-#: templates/label_create_form.html:12
+#: templates/label_create_form.html:12 templates/labels_index.html:37
+#: templates/status_create_form.html:12
 #, fuzzy
 #| msgid "Создать метку"
 msgid "Создать"
@@ -82,15 +83,15 @@ msgstr "Создать"
 msgid "Label deletion"
 msgstr "Удаление метки"
 
-#: templates/label_delete_form.html:9
+#: templates/label_delete_form.html:9 templates/status_delete_form.html:9
 msgid "Are you sure you want to delete"
 msgstr "Вы увеерены что хотите удалить"
 
-#: templates/label_delete_form.html:11
+#: templates/label_delete_form.html:11 templates/status_delete_form.html:11
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/label_delete_form.html:12
+#: templates/label_delete_form.html:12 templates/status_delete_form.html:12
 msgid "No, I change my mind"
 msgstr "Нет, я передумал"
 
@@ -102,19 +103,15 @@ msgstr "Форма обновления метки"
 msgid "Update"
 msgstr "Изменить"
 
-#: templates/label_view.html:30
+#: templates/label_view.html:30 templates/status_view.html:22
 #, fuzzy
 #| msgid "Разлогиниться"
 msgid "Изменить"
-msgstr "Разлогиниться"
+msgstr "Изменить"
 
-#: templates/label_view.html:31
+#: templates/label_view.html:31 templates/status_view.html:23
 msgid "Удалить"
 msgstr "Удалить"
-
-#: templates/labels_index.html:37
-msgid "Create label"
-msgstr "Создать метку"
 
 #: templates/login.html:35
 msgid "Вы уже залогинились"
@@ -127,6 +124,34 @@ msgstr "Пожалуйста, залогиньтесь"
 #: templates/login.html:53
 msgid "Забыли пароль?"
 msgstr "Забыли пароль?"
+
+#: templates/status_create_form.html:6
+#, fuzzy
+#| msgid "Create new user"
+msgid "Create new status for tasks"
+msgstr "Создать новый статус для задачи"
+
+#: templates/status_delete_form.html:5
+#, fuzzy
+#| msgid "Label deletion"
+msgid "Status deletion"
+msgstr "Удаление метки"
+
+#: templates/status_update_form.html:6
+#, fuzzy
+#| msgid "Label update form"
+msgid "Status update form"
+msgstr "Форма обновления статуса"
+
+#: templates/status_update_form.html:12
+msgid "Обновить"
+msgstr "Обновить"
+
+#: templates/statuses_index.html:29
+#, fuzzy
+#| msgid "Создать метку"
+msgid "Создать статус"
+msgstr "Создать метку"
 
 #: views.py:42
 #, python-format
@@ -153,6 +178,33 @@ msgstr "Метка успешно удалена"
 #: views.py:93
 msgid "You don't have permissions to delete this label"
 msgstr "У Вас нет необхожимых правт для удаления этой метки"
+
+#: views.py:123
+#, fuzzy
+#| msgid "Метка успешно создана"
+msgid "Статус успешно создан"
+msgstr "Статус успешно создан"
+
+#: views.py:133
+#, fuzzy
+#| msgid "Метка успешно обновлена"
+msgid "Статус успешно обновлен"
+msgstr "Статус успешно обновлен"
+
+#: views.py:143
+#, fuzzy
+#| msgid "Метка успешно удалена"
+msgid "Статус успешно удален"
+msgstr "Статус успешно удален"
+
+#: views.py:144
+#, fuzzy
+#| msgid "You don't have permissions to delete this label"
+msgid "You don't have permissions to delete this status"
+msgstr "У Вас нет необхожимых правт для удаления этого статуса"
+
+#~ msgid "Create label"
+#~ msgstr "Создать метку"
 
 #~ msgid "Update label"
 #~ msgstr "Обновоить метку"
@@ -192,9 +244,6 @@ msgstr "У Вас нет необхожимых правт для удалени
 
 #~ msgid "Login"
 #~ msgstr "Войти в систему"
-
-#~ msgid "Create new user"
-#~ msgstr "Создать нового пользователя"
 
 #~ msgid "Using cover for hexlet task template for"
 #~ msgstr "Используется шаблон 'cover' по заданию Хеклет"

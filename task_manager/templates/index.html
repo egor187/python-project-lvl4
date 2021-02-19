@@ -41,7 +41,7 @@
                     <a class="nav-link" href={% url 'login' %}>{% translate "Залогиниться" %}</a>
                 {% endif %}
               {% endblock login_link %}
-        <a class="nav-link" href={% url 'tasks:statuses_list' %}>{% translate "Статусы" %}</a>
+        <a class="nav-link" href={% url 'statuses_list' %}>{% translate "Статусы" %}</a>
         <a class="nav-link" href={% url 'tasks:tasks_list' %}>{% translate "Задачи" %}</a>
         <a class="nav-link" href={% url 'labels_list' %}>{% translate "Метки" %}</a>
 	    <a class="nav-link" href={% url 'users:create_user' %}>{% translate "Создать нового пользователя" %}</a>

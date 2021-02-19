@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block welcome %}
+    <h1 class="mb-4">{% translate "Status update form" %}</h1>
+
+    <form method="POST" action="{% url 'update_status' taskstatus.id %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="{% translate 'Обновить' %}">
+        </div>
+    </form>
+{% endblock %}
