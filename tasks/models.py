@@ -3,7 +3,7 @@ from users.models import CustomUser
 
 
 class TaskStatus(models.Model):
-    name = models.CharField(max_length=70, unique=True)
+    name = models.CharField(verbose_name='Имя', max_length=70, unique=True)
 
     def __str__(self):
         return self.name
