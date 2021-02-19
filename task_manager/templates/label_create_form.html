@@ -5,7 +5,7 @@
 {% block welcome %}
     <h1 class="mb-4">{% translate "Create new label" %}</h1>
 
-    <form method="POST" action="{% url 'tasks:create_label' %}">
+    <form method="POST" action="{% url 'create_label' %}">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="form-group">

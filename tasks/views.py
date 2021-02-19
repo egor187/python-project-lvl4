@@ -116,42 +116,42 @@ class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
         return redirect(self.success_url)
 
 
-class ListLabelsView(generic.ListView):
-    model = Label
-    template_name = 'labels_index.html'
-
-
-class LabelView(generic.DetailView):
-    model = Label
-    template_name = 'label_view.html'
-
-
-class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
-    model = Label
-    fields = '__all__'
-    template_name = 'label_create_form.html'
-    success_url = reverse_lazy('tasks:labels_list')
-    success_message = _('"%(name)s" - label was successfully created')
-
-class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
-    model = Label
-    fields = '__all__'
-    template_name = 'label_update_form.html'
-    success_url = reverse_lazy('tasks:labels_list')
-    success_message = _('"%(name)s" - label was successfully updated')
-
-class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
-    model = Label
-    template_name = 'label_delete_form.html'
-    success_url = reverse_lazy('tasks:labels_list')
-    success_message = _('label was successfully deleted')
-    protected_message = _("You don't have permissions to delete this label")
-
-    # def delete(self, request, *args, **kwargs):
-    #     try:
-    #         result = super().delete(request, *args, **kwargs)
-    #         messages.success(request, self.success_message)
-    #         return result
-    #     except Exception:
-    #         messages.error(request, self.protected_message)
-    #     return redirect(self.success_url)
+# class ListLabelsView(generic.ListView):
+#     model = Label
+#     template_name = 'labels_index.html'
+#
+#
+# class LabelView(generic.DetailView):
+#     model = Label
+#     template_name = 'label_view.html'
+#
+#
+# class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+#     model = Label
+#     fields = '__all__'
+#     template_name = 'label_create_form.html'
+#     success_url = reverse_lazy('tasks:labels_list')
+#     success_message = _('"%(name)s" - label was successfully created')
+#
+# class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+#     model = Label
+#     fields = '__all__'
+#     template_name = 'label_update_form.html'
+#     success_url = reverse_lazy('tasks:labels_list')
+#     success_message = _('"%(name)s" - label was successfully updated')
+#
+# class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+#     model = Label
+#     template_name = 'label_delete_form.html'
+#     success_url = reverse_lazy('tasks:labels_list')
+#     success_message = _('label was successfully deleted')
+#     protected_message = _("You don't have permissions to delete this label")
+#
+#     # def delete(self, request, *args, **kwargs):
+#     #     try:
+#     #         result = super().delete(request, *args, **kwargs)
+#     #         messages.success(request, self.success_message)
+#     #         return result
+#     #     except Exception:
+#     #         messages.error(request, self.protected_message)
+#     #     return redirect(self.success_url)

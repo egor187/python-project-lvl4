@@ -4,12 +4,12 @@
 {% block welcome %}
     <h1 class="mb-4">{% translate "Label deletion" %}</h1>
 
-    <form method="post" action="{% url 'tasks:delete_label' object.pk %}">
+    <form method="post" action="{% url 'delete_label' object.pk %}">
         {% csrf_token %}
         <p>{% translate "Are you sure you want to delete" %} {{ object.name }}?</p>
         <div class="form-group">
             <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
-            <a class="btn btn-info" href={% url 'tasks:labels_list' %}>{% translate 'No, I change my mind' %}"</a>
+            <a class="btn btn-info" href={% url 'labels_list' %}>{% translate 'No, I change my mind' %}"</a>
         </div>
     </form>
 {% endblock welcome %}

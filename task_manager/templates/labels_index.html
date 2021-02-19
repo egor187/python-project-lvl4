@@ -18,10 +18,10 @@
 			</tr>
 			{% for label in object_list %}
 				<tr>
-					<td><a href={% url 'tasks:label' label.id %}>{{ label.name }}</a></td>
+					<td><a href={% url 'label' label.id %}>{{ label.name }}</a></td>
 					<td>
 						{% for task in label.task_set.all %}
-							<a class="badge badge-infop-2" href={% url 'tasks:label' label.id %}>"{{ task }}"</a>
+							<a class="badge badge-infop-2" href={% url 'label' label.id %}>"{{ task }}"</a>
 
 						{% endfor %}
 					</td>
@@ -29,5 +29,5 @@
 			{% endfor %}
 		</table>
 
-	<a class="btn btn-primary" href={% url 'tasks:create_label' %}>{% translate "Create label" %}</a>
+	<a class="btn btn-primary" href={% url 'create_label' %}>{% translate "Create label" %}</a>
 {% endblock %}
