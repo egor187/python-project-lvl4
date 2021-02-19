@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-11 10:20+0300\n"
+"POT-Creation-Date: 2021-02-19 11:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,45 +20,94 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: settings.py:130
+#: task_manager/settings.py:151
 msgid "English"
 msgstr "Английский"
 
-#: settings.py:131
+#: task_manager/settings.py:152
 msgid "Russian"
 msgstr "Русский"
 
-#: templates/index.html:30
-msgid "Home"
-msgstr "Начало"
+#: task_manager/templates/index.html:28 task_manager/templates/login.html:15
+msgid "Разлогиниться"
+msgstr ""
 
-#: templates/index.html:31
-msgid "Users"
-msgstr "Пользователи"
+#: task_manager/templates/index.html:37
+msgid "Домой"
+msgstr ""
 
-#: templates/index.html:34
-msgid "Logout"
-msgstr "Выйти из системы"
+#: task_manager/templates/index.html:38
+msgid "Пользователи"
+msgstr ""
 
-#: templates/index.html:36
-msgid "Login"
-msgstr "Войти в систему"
+#: task_manager/templates/index.html:41 task_manager/templates/login.html:18
+msgid "Залогиниться"
+msgstr ""
 
-#: templates/index.html:39
-msgid "Create new user"
-msgstr "Создать нового пользователя"
+#: task_manager/templates/index.html:44
+msgid "Статусы"
+msgstr ""
 
-#: templates/index.html:51
+#: task_manager/templates/index.html:45
+msgid "Задачи"
+msgstr ""
+
+#: task_manager/templates/index.html:46
+msgid "Метки"
+msgstr ""
+
+#: task_manager/templates/index.html:47 task_manager/templates/login.html:29
+#: task_manager/templates/login.html:50
+msgid "Создать нового пользователя"
+msgstr ""
+
+#: task_manager/templates/index.html:59
 msgid "Welcome to my FINAL hexlet project"
 msgstr "Приветствую на странице моего ФИНАЛЬНОГО проекта на Хекслет"
 
-#: templates/index.html:53
+#: task_manager/templates/index.html:61
 msgid "Gonna make django app and deploy it in heroku PaaS"
 msgstr "Делаю django-приложение и деплою на платформу Heroku"
 
-#: templates/index.html:59
-msgid "Using cover for hexlet task template for"
-msgstr "Используется шаблон 'cover' по заданию Хеклет"
+#: task_manager/templates/login.html:35
+msgid "Вы уже залогинились"
+msgstr ""
+
+#: task_manager/templates/login.html:42
+msgid "Пожалуйста, залогиньтесь"
+msgstr ""
+
+#: task_manager/templates/login.html:52
+msgid "Забыли пароль?"
+msgstr ""
+
+#: task_manager/views.py:40
+#, python-format
+msgid "%(username)s was successfully login"
+msgstr ""
+
+#: task_manager/views.py:44
+#, python-format
+msgid "%(username)s was successfully logout"
+msgstr ""
+
+#~ msgid "Home"
+#~ msgstr "Начало"
+
+#~ msgid "Users"
+#~ msgstr "Пользователи"
+
+#~ msgid "Logout"
+#~ msgstr "Выйти из системы"
+
+#~ msgid "Login"
+#~ msgstr "Войти в систему"
+
+#~ msgid "Create new user"
+#~ msgstr "Создать нового пользователя"
+
+#~ msgid "Using cover for hexlet task template for"
+#~ msgstr "Используется шаблон 'cover' по заданию Хеклет"
 
 #~ msgid "Features"
 #~ msgstr "Фишки"

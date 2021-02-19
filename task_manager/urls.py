@@ -25,5 +25,6 @@ urlpatterns = [
     path('logout/', views.LogoutUserView.as_view(template_name='login.html'), name='logout'),
     path('users/', include('users.urls')),
     path('tasks/', include('tasks.urls')),
+
     path('admin/', admin.site.urls),
 ]
