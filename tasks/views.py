@@ -103,7 +103,7 @@ class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     ]
     template_name = 'task_delete_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('Task was successfully deleted')
+    success_message = _('Задача успешно удалена')
     protected_message = _("You don't have permissions to delete this status")
 
     def delete(self, request, *args, **kwargs):
