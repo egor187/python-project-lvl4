@@ -82,7 +82,7 @@ class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     fields = '__all__'
     template_name = 'task_create_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('Task was successfully created')
+    success_message = _('Задача успешно создана')
 
     # override class-method to achieve auto increment form field "creator" with current autheticated user
     def form_valid(self, form):
