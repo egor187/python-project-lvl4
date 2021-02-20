@@ -11,4 +11,5 @@ class CustomUser(AbstractUser):
         return self.username
 
     def get_absolute_url(self):
-        return f'/users/{self.id}/'
+        # return f'/users/{self.id}/'
+        return f'/users/'
