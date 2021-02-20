@@ -9,7 +9,7 @@
         <p>{% translate "Вы действительно хотите удалить пользователя" %} {{ user.get_full_name }}?</p>
         <div class="form-group">
             <input class="btn btn-danger" type="submit" value="{% translate 'Да, удалить' %}">
-            <a class="btn btn-info" href={% url 'users:update_user' %}>{% translate 'Нет, я передумал' %}"</a>
+            <a class="btn btn-info" href={% url 'users:update_user' user.pk %}>{% translate 'Нет, я передумал' %}"</a>
         </div>
     </form>
 {% endblock welcome %}
