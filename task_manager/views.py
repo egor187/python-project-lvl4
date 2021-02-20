@@ -137,7 +137,7 @@ class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView)
     ]
     template_name = 'status_update_form.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = _('Статус успешно изменен')
+    success_message = _('Статус успешно изменён')
 
 
 class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
@@ -147,7 +147,7 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView)
     ]
     template_name = 'status_delete_form.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = _('Статус успешно удален')
+    success_message = _('Статус успешно удалён')
     protected_message = _("Нельзя удалить статус так как он используется")
 
     # Override class method for add messages.
