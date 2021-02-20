@@ -15,16 +15,26 @@
 	<form method="get" class="form">
 		{% csrf_token %}
 		{% bootstrap_form filter.form %}
-		{% bootstrap_button "Filter" button_class="btn-success" %}
 
+		{% if user.is_authenticated %}
+		<div class="form-check">
+			<label class="form-check-label" for="id_self_tasks">Только свои задачи</label>
+			<input class="btn btn-primary" id="id_self_tasks" type="checkbox">
+		</div>
+
+		{% endif %}
+		{% bootstrap_button "Показать" button_class="btn-success" %}
 		<a href="{% url 'tasks:tasks_list' %}" class="btn btn-success">
 			Clear filters
 		</a>
-		{% if user.is_authenticated %}
-		<a href="{% url 'tasks:tasks_list' %}?creator={{request.user.pk}}" class="btn btn-success">
-        	Только свои задачи
-    	</a>
-		{% endif %}
+
+<!--		<a href="{% url 'tasks:tasks_list' %}?creator={{request.user.pk}}" class="btn btn-success">-->
+<!--        	Только свои задачи-->
+<!--    	</a>-->
+
+<!--	<div class="form-group">-->
+<!--		<input class="btn btn-primary" type="submit" value="Показать">-->
+<!--	</div>-->
 	</form>
 </p>
 	<h1>Tasks</h1>
