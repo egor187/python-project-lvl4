@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -14,8 +14,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
+from django.contrib.auth.password_validation import validate_password
 from .forms import CustomUserUpdateForm
 from .forms import CustomUserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 class ListUserView(generic.ListView):
     model = CustomUser
@@ -38,7 +40,7 @@ class CreateUserView(SuccessMessageMixin, CreateView, FormView):
     model = CustomUser
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    success_message = _('User was successfully registered')
+    success_message = _('Пользователь успешно зарегистрирован')
 
 
 # class LoginUserView(SuccessMessageMixin, LoginView):
@@ -56,15 +58,8 @@ class PasswordChangeUserView(SuccessMessageMixin, PasswordChangeView):
 
 class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
-    fields = [
-        'username',
-        'first_name',
-        'last_name',
-        'email',
-    ]
-
-    # form_class = CustomUserUpdateForm
-
+    # Use from_class to add password1/password2 fields from UserCreationFrom()
+    form_class = CustomUserUpdateForm
     not_owner_redirect_url = reverse_lazy('users:user_list')
     not_owner_message = _('You are not permitted to this action')
     success_message = _('Profile updated')
@@ -78,6 +73,10 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         if kwargs['pk'] != request.user.pk:
             messages.error(request, self.not_owner_message)
             return redirect(self.not_owner_redirect_url)
+        # try:
+        #     validate_password('123')
+        # except ValidationError as e:
+        #     return e
         return super().dispatch(request, *args, **kwargs)
 
 
