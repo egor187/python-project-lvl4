@@ -82,7 +82,7 @@ class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     fields = '__all__'
     template_name = 'task_create_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('"%(name)s" - task was successfully created')
+    success_message = _('Task was successfully created')
 
     # override class-method to achieve auto increment form field "creator" with current autheticated user
     def form_valid(self, form):
@@ -94,7 +94,7 @@ class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     fields = '__all__'
     template_name = 'task_update_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('"%(name)s" - task was successfully updated')
+    success_message = _('Task was successfully updated')
 
 class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     model = Task
@@ -103,7 +103,7 @@ class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     ]
     template_name = 'task_delete_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('task was successfully deleted')
+    success_message = _('Task was successfully deleted')
     protected_message = _("You don't have permissions to delete this status")
 
     def delete(self, request, *args, **kwargs):
