@@ -20,8 +20,8 @@
 			<tr>
 				<th>ID пользователя</th>
 				<th>Nick пользователя</th>
-				<th>Имя пользователя</th>
-				<th>Фамилия пользователя</th>
+				<th>ФИО пользователя</th>
+<!--				<th>Фамилия пользователя</th>-->
 				<th>E-mail пользователя</th>
 			</tr>
 		{% for user in object_list %}
@@ -29,8 +29,8 @@
 			<tr>
 				<td><a href={% url 'users:user' user.id %}>{{ user.id }}</a></td>
 				<td><a href={% url 'users:user' user.id %}>{{ user.username }}</a></td>
-				<td><a href={% url 'users:user' user.id %}>{{ user.first_name }}</a></td>
-				<td><a href={% url 'users:user' user.id %}>{{ user.last_name }}</a></td>
+				<td><a href={% url 'users:user' user.id %}>{{ user.first_name }} {{ user.last_name }}</a></td>
+<!--				<td><a href={% url 'users:user' user.id %}>{{ user.last_name }}</a></td>-->
 				<td><a href={% url 'users:user' user.id %}>{{ user.email }}</a></td>
 			</tr>
 		{% endfor %}
