@@ -148,7 +148,7 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView)
     template_name = 'status_delete_form.html'
     success_url = reverse_lazy('statuses_list')
     success_message = _('Статус успешно удален')
-    protected_message = _("You don't have permissions to delete this status")
+    protected_message = _("Нельзя удалить статус так как он используется")
 
     # Override class method for add messages.
     def delete(self, request, *args, **kwargs):
