@@ -11,7 +11,10 @@
 
 {% block welcome %}
 <body class="text-center">
-	<p class="lead"> {{ object.username}} - {{object.email}} </p>
+	<p class="lead"> Username:	{{ object.username}}</p>
+	<p class="lead"> Firstname:	{{object.first_name}}</p>
+	<p class="lead"> Lastname:	{{object.last_name}}</p>
+	<p class="lead"> Email:		{{object.email}} </p>
 
 	<a href={% url 'users:update_user' object.id %}>{% translate "Изменить профиль" %}</a>
 	<a href={% url 'users:delete_user' object.id %}>{% translate "Удалить профиль" %}</a>
