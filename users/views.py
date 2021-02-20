@@ -37,7 +37,7 @@ class UserView(generic.DetailView):
 class CreateUserView(SuccessMessageMixin, CreateView, FormView):
     model = CustomUser
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('users:user_list')
+    success_url = reverse_lazy('login')
     success_message = _('%(username)s was successfully created')
 
 
