@@ -1,5 +1,12 @@
 {% extends 'index.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
+
+{% if bootstrap_messages %}
+	{% block message %}
+		{% bootstrap_messages %}
+	{% endblock %}
+{% endif %}
 
 {% block welcome %}
     <h1 class="mb-4">{% translate "Status deletion" %}</h1>
