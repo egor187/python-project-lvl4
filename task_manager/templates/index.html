@@ -24,7 +24,7 @@
   <body class="text-center">
   <ul>
   {% if user.is_authenticated %}
-    <h4>Пользователь: {{ user }}</h4>
+    <h4>Пользователь: {{ user.first_name }} {{ user.last_name }}</h4>
     <a class="btn btn-primary nav-link" href={% url 'logout' %}>{% translate "Разлогиниться" %}</a>
   {% endif %}
   </ul>
