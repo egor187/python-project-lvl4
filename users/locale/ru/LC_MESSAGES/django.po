@@ -99,7 +99,7 @@ msgstr "У Вас нет доступа к данному действию"
 
 #: views.py:70
 msgid "Profile updated"
-msgstr "Профиль изменен"
+msgstr "Пользователь успешно изменен"
 
 #: views.py:90
 msgid "You are not owner for this action"

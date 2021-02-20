@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-20 17:55+0300\n"
+"POT-Creation-Date: 2021-02-20 21:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,18 +52,16 @@ msgstr "Форма обновления задачи"
 msgid "Изменить"
 msgstr "Изменить"
 
-#: templates/task_view.html:34
+#: templates/task_view.html:37
 msgid "Update task"
 msgstr "Обновить задачу"
 
-#: templates/task_view.html:35
+#: templates/task_view.html:38
 msgid "Delete task"
 msgstr "Удалить задачу"
 
 #: views.py:85
-#, fuzzy
-#| msgid "task was successfully deleted"
-msgid "Task was successfully created"
+msgid "Задача успешно создана"
 msgstr "Задача успешно создана"
 
 #: views.py:97
@@ -73,14 +71,22 @@ msgid "Task was successfully updated"
 msgstr "Задача успешно обновлена"
 
 #: views.py:106
-#, fuzzy
-#| msgid "task was successfully deleted"
-msgid "Task was successfully deleted"
+msgid "Задача успешно удалена"
 msgstr "Задача успешно удалена"
 
 #: views.py:107
 msgid "You don't have permissions to delete this status"
 msgstr "У Вас нет необходимых прав доступа для удаления данного статуса"
+
+#, fuzzy
+#~| msgid "task was successfully deleted"
+#~ msgid "Task was successfully created"
+#~ msgstr "Задача успешно создана"
+
+#, fuzzy
+#~| msgid "task was successfully deleted"
+#~ msgid "Task was successfully deleted"
+#~ msgstr "Задача успешно удалена"
 
 #~ msgid "\"%(name)s\" - task was successfully updated"
 #~ msgstr "\"%(name)s\" - задача была успешно обновлена"
