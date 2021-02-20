@@ -22,7 +22,7 @@
 		</a>
 		{% if user.is_authenticated %}
 		<a href="{% url 'tasks:tasks_list' %}?creator={{request.user.pk}}" class="btn btn-success">
-        	My tasks
+        	Только свои задачи
     	</a>
 		{% endif %}
 	</form>
