@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
 from tasks.filters import TaskFilter
+from django.contrib.auth.decorators import login_required
 
 
 # class ListStatusesView(generic.ListView):
@@ -68,9 +69,25 @@ class ListTasksView(generic.ListView):
     context_object_name = 'tasks'
 
     def get_context_data(self, **kwargs):
+        """ To get acces to filter.qs need to override class_method. Call super() method and then assign key 'filter' in
+        dict 'context' (for template variable 'filter') and put value into it as filter object. Then, by put in template
+        <input> with attr 'name' and type 'checkbox' when clicking on it 'name' key get its value 'on'. So in this method
+        possible to variate what qs will pass to filter object"""
         context = super().get_context_data(*kwargs)
         context['filter'] = TaskFilter(self.request.GET)
+        if self.request.GET.get('self_tasks') == "on":
+            context['filter'] = TaskFilter(self.request.GET, queryset=Task.objects.filter(creator=self.request.user))
         return context
+
+# Example with state filter in func-style
+# @login_required
+# def ListTasksView(request):
+#     if request.GET.get("self_tasks") == "on":
+#         queryset = Task.objects.filter(creator=request.user)
+#     else:
+#         queryset = Task.objects.all()
+#     f = TaskFilter(request.GET, queryset)
+#     return render(request, "tasks_index.html", {"filter": f})
 
 
 class TaskView(generic.DetailView):
