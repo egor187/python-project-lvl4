@@ -62,7 +62,7 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = CustomUserUpdateForm
     not_owner_redirect_url = reverse_lazy('users:user_list')
     not_owner_message = _('You are not permitted to this action')
-    success_message = _('Profile updated')
+    success_message = _('Пользователь успешно изменен')
 
     # Redirect from update_form if pk in request different from page where update_form form
     # URLdispatcher capture <int:pk> as keyword arg (**kwargs) for pass to view (UpdateUserView). So, you may
@@ -88,7 +88,7 @@ class DeleteUserView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     not_owner_redirect_url = reverse_lazy('users:user_list')
     not_owner_message = _('You are not owner for this action')
     no_permissions_message = _('You are not permitted to this action')
-    success_message = 'Profile deleted'
+    success_message = 'Пользователь успешно удален'
 
     def handle_no_permission(self):
         messages.error(self.request, self.no_permissions_message)

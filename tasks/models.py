@@ -34,7 +34,7 @@ class Task(models.Model):
     task_status = models.ForeignKey(TaskStatus, verbose_name='Статус', null=True, blank=True, on_delete=models.PROTECT)
     creator = models.ForeignKey(CustomUser, verbose_name='Автор', on_delete=models.CASCADE, null=True, blank=True, related_name='creator')
     assigned_to = models.ForeignKey(CustomUser, verbose_name='Исполнитель', on_delete=models.SET_NULL, null=True, blank=True, related_name='assigned')
-    label = models.ManyToManyField(Label, blank=True, verbose_name='Метки')
+    label = models.ManyToManyField(Label, blank=True, verbose_name='Метка')
 
     class Meta():
         ordering = ['name']
