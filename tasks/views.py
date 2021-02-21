@@ -65,6 +65,7 @@ from tasks.filters import TaskFilter
 class ListTasksView(generic.ListView):
     model = Task
     template_name = 'tasks_index.html'
+    context_object_name = 'tasks'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(*kwargs)
