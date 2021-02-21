@@ -8,7 +8,7 @@ class CustomUser(AbstractUser):
         ordering = ['username']
 
     def __str__(self):
-        return self.username
+        return self.get_full_name()
 
     def get_absolute_url(self):
         # return f'/users/{self.id}/'
