@@ -8,9 +8,7 @@ class CustomUser(AbstractUser):
         ordering = ['username']
 
     def __str__(self):
-        """String representation of user model."""
-        return self.get_full_name()
+        return self.get_full_name() # return first_name and last_name of User model with space between
 
     def get_absolute_url(self):
-        # return f'/users/{self.id}/'
         return f'/users/'
