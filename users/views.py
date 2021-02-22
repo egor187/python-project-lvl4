@@ -87,7 +87,7 @@ class DeleteUserView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
     not_owner_redirect_url = reverse_lazy('users:user_list')
     not_owner_message = _('You are not owner for this action')
-    no_permissions_message = _('You are not permitted to this action')
+    protected_message = _('Нельзя удалить пользователя, который назначен исполнителем задачи')
     success_message = 'Пользователь успешно удалён'
 
     def handle_no_permission(self):
@@ -107,7 +107,6 @@ class DeleteUserView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             if self.success_message:
                 messages.success(request, self.success_message)
             return result
-        except ProtectedError:
-            if self.protected_message:
-                messages.error(request, self.protected_message)
-            return redirect(self.protected_url)
+        except Exception:
+            messages.error(request, self.protected_message)
+            return redirect(self.not_owner_redirect_url)
