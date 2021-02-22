@@ -30,7 +30,7 @@ class Label(models.Model):
 
 class Task(models.Model):
     name = models.CharField('Имя', max_length=50, null=True, blank=True,)
-    description = models.CharField('Описание', max_length=150, null=True, blank=True,)
+    description = models.TextField('Описание', max_length=150, null=True, blank=True,)
     task_status = models.ForeignKey(TaskStatus, verbose_name='Статус', null=True, blank=True, on_delete=models.PROTECT)
     creator = models.ForeignKey(CustomUser, verbose_name='Автор', on_delete=models.CASCADE, null=True, blank=True, related_name='creator')
     assigned_to = models.ForeignKey(CustomUser, verbose_name='Исполнитель', on_delete=models.SET_NULL, null=True, blank=True, related_name='assigned')
