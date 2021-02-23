@@ -12,7 +12,7 @@ class TaskFilter(django_filters.FilterSet):
     purpose need to define type of filter for 'new_name' field (ModelMultipleChoiceFilter) which also need to
     pass 'queryset'-kwarg from Label model. At the end in Meta by choosing fields of a model we define 'new_name'
      field"""
-    new_name = django_filters.ModelMultipleChoiceFilter(queryset=Label.objects.all(), field_name='label', label='Метка')
+    new_name = django_filters.ModelMultipleChoiceFilter(queryset=Label.objects.all(), field_name='labels', label='Метка')
     class Meta:
         model = Task
         fields = ['status', 'executor', 'creator', 'new_name']

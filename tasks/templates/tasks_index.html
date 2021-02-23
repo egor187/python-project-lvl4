@@ -50,7 +50,7 @@
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.creator }}</a></td>
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.executor.first_name }} {{ task.executor.last_name }}</a></td>
 					<td>
-					{% for tag in task.label.all %}
+					{% for tag in task.labels.all %}
 						<a class="badge badge-info p-2" href={% url 'tasks:task' task.id %}>"{{ tag }}"</a>
 					{% endfor %}
 					</td>

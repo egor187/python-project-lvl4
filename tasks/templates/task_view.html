@@ -27,7 +27,7 @@
 			<td><p class="lead"> {{ object.executor.first_name }} {{ object.executor.last_name }}</p></td>
 
 			<td>
-				{% for tag in object.label.all %}
+				{% for tag in object.labels.all %}
 					<span class="badge badge-info p-2">"{{ tag }}"</span>
 				{% endfor %}
 			</td>
