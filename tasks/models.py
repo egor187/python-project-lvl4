@@ -33,7 +33,7 @@ class Task(models.Model):
     description = models.TextField('Описание', max_length=150, null=True, blank=True)
     status = models.ForeignKey(TaskStatus, verbose_name='Статус', null=True, blank=True, on_delete=models.PROTECT)
     creator = models.ForeignKey(CustomUser, verbose_name='Автор', on_delete=models.CASCADE, null=True, blank=True, related_name='creator')
-    assigned_to = models.ForeignKey(CustomUser, verbose_name='Исполнитель', on_delete=models.PROTECT, null=True, blank=True, related_name='assigned')
+    executor = models.ForeignKey(CustomUser, verbose_name='Исполнитель', on_delete=models.PROTECT, null=True, blank=True, related_name='executor')
     label = models.ManyToManyField(Label, through='RelatedModel', through_fields=('task', 'label'), blank=True, verbose_name='Метки')
 
     class Meta():

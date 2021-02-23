@@ -48,7 +48,7 @@
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.name }}</a></td>
 					<td><a class="badge badge-danger badge-pill p-2" href={% url 'tasks:task' task.id %}>{{ task.status }}</a></td>
 					<td><a href={% url 'tasks:task' task.id %}>{{ task.creator }}</a></td>
-					<td><a href={% url 'tasks:task' task.id %}>{{ task.assigned_to.first_name }} {{ task.assigned_to.last_name }}</a></td>
+					<td><a href={% url 'tasks:task' task.id %}>{{ task.executor.first_name }} {{ task.executor.last_name }}</a></td>
 					<td>
 					{% for tag in task.label.all %}
 						<a class="badge badge-info p-2" href={% url 'tasks:task' task.id %}>"{{ tag }}"</a>

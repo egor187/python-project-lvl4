@@ -15,4 +15,4 @@ class TaskFilter(django_filters.FilterSet):
     new_name = django_filters.ModelMultipleChoiceFilter(queryset=Label.objects.all(), field_name='label', label='Метка')
     class Meta:
         model = Task
-        fields = ['status', 'assigned_to', 'creator', 'new_name']
+        fields = ['status', 'executor', 'creator', 'new_name']
