@@ -109,7 +109,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# if testing (sys.argv contain 'test') db settings set to 'local db' sqlite3 and django connect to it to
+# if testing (sys.argv contain 'test') db settings set to
+# 'local db' sqlite3 and django connect to it to
 # create tables for testings purpose
 if 'test' in sys.argv:
     DATABASES['default'] = {
