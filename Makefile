@@ -14,7 +14,7 @@ package-install:
 	        pip install --user dist/*.whl
 
 lint:
-	        poetry run flake8 task_manager --exclude settings.py
+	        poetry run flake8 task_manager/ tasks/ users/ --exclude=migrations,task_manager/settings.py
 
 shell:
 		poetry run python manage.py shell

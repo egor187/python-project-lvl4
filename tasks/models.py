@@ -30,11 +30,41 @@ class Label(models.Model):
 
 class Task(models.Model):
     name = models.CharField('Имя', max_length=50, null=True, blank=True)
-    description = models.TextField('Описание', max_length=150, null=True, blank=True)
-    status = models.ForeignKey(TaskStatus, verbose_name='Статус', null=True, blank=True, on_delete=models.PROTECT)
-    creator = models.ForeignKey(CustomUser, verbose_name='Автор', on_delete=models.CASCADE, null=True, blank=True, related_name='creator')
-    executor = models.ForeignKey(CustomUser, verbose_name='Исполнитель', on_delete=models.PROTECT, null=True, blank=True, related_name='executor')
-    labels = models.ManyToManyField(Label, through='RelatedModel', through_fields=('task', 'label'), blank=True, verbose_name='Метки')
+    description = models.TextField(
+        'Описание',
+        max_length=150,
+        null=True,
+        blank=True
+    )
+    status = models.ForeignKey(
+        TaskStatus,
+        verbose_name='Статус',
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT
+    )
+    creator = models.ForeignKey(
+        CustomUser,
+        verbose_name='Автор',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='creator'
+    )
+    executor = models.ForeignKey(
+        CustomUser,
+        verbose_name='Исполнитель',
+        on_delete=models.PROTECT,
+        null=True, blank=True,
+        related_name='executor'
+    )
+    labels = models.ManyToManyField(
+        Label,
+        through='RelatedModel',
+        through_fields=('task', 'label'),
+        blank=True,
+        verbose_name='Метки'
+    )
 
     class Meta():
         ordering = ['name']

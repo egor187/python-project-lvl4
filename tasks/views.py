@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from tasks.models import Task, TaskStatus, Label
+from django.shortcuts import redirect
+from tasks.models import Task, TaskStatus
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib import messages
@@ -8,7 +8,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
 from tasks.filters import TaskFilter
-from django.contrib.auth.decorators import login_required
 
 
 class ListStatusesView(generic.ListView):
@@ -20,7 +19,11 @@ class StatusView(generic.DetailView):
     model = TaskStatus
 
 
-class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+class CreateStatusView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.CreateView
+):
     model = TaskStatus
     fields = [
         'name',
@@ -30,7 +33,11 @@ class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView)
     success_message = _('"%(name)s"-status was successfully created')
 
 
-class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+class UpdateStatusView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.UpdateView
+):
     model = TaskStatus
     fields = [
         'name',
@@ -40,7 +47,11 @@ class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView)
     success_message = _('"%(name)s"-status was successfully updated')
 
 
-class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+class DeleteStatusView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.DeleteView
+):
     model = TaskStatus
     fields = [
         'name',
@@ -69,14 +80,20 @@ class ListTasksView(generic.ListView):
     context_object_name = 'tasks'
 
     def get_context_data(self, **kwargs):
-        """ To get acces to filter.qs need to override class_method. Call super() method and then assign key 'filter' in
-        dict 'context' (for template variable 'filter') and put value into it as filter object. Then, by put in template
-        <input> with attr 'name' and type 'checkbox' when clicking on it 'name' key get its value 'on'. So in this method
+        """ To get acces to filter.qs need to override class_method.
+        Call super() method and then assign key 'filter' in
+        dict 'context' (for template variable 'filter') and put value
+        into it as filter object. Then, by put in template
+        <input> with attr 'name' and type 'checkbox' when clicking on
+        it 'name' key get its value 'on'. So in this method
         possible to variate what qs will pass to filter object"""
         context = super().get_context_data(*kwargs)
         context['filter'] = TaskFilter(self.request.GET)
         if self.request.GET.get('self_tasks') == "on":
-            context['filter'] = TaskFilter(self.request.GET, queryset=Task.objects.filter(creator=self.request.user))
+            context['filter'] = TaskFilter(
+                self.request.GET,
+                queryset=Task.objects.filter(creator=self.request.user)
+            )
         return context
 
 # Example with state filter in func-style
@@ -102,10 +119,13 @@ class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     success_url = reverse_lazy('tasks:tasks_list')
     success_message = _('Задача успешно создана')
 
-    # override class-method to achieve auto increment form field "creator" with current autheticated user
+    # override class-method to achieve auto increment form field
+    # "creator" with current autheticated user
     def form_valid(self, form):
-        form.instance.creator = self.request.user # attribute "user" contain current login user by LoginRequiredMixin
+        # attribute "user" contain current login user by LoginRequiredMixin
+        form.instance.creator = self.request.user
         return super().form_valid(form)
+
 
 class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     model = Task
@@ -113,6 +133,7 @@ class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     template_name = 'task_update_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
     success_message = _('Задача успешно изменена')
+
 
 class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
     model = Task
@@ -129,47 +150,6 @@ class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
             result = super().delete(request, *args, **kwargs)
             messages.success(request, self.success_message)
             return result
-        except Exception as e:
+        except Exception:
             messages.error(request, self.protected_message)
         return redirect(self.success_url)
-
-
-class ListLabelsView(generic.ListView):
-    model = Label
-    template_name = 'labels_index.html'
-
-
-class LabelView(generic.DetailView):
-    model = Label
-    template_name = 'label_view.html'
-
-
-class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
-    model = Label
-    fields = '__all__'
-    template_name = 'label_create_form.html'
-    success_url = reverse_lazy('tasks:labels_list')
-    success_message = _('"%(name)s" - label was successfully created')
-
-class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
-    model = Label
-    fields = '__all__'
-    template_name = 'label_update_form.html'
-    success_url = reverse_lazy('tasks:labels_list')
-    success_message = _('"%(name)s" - label was successfully updated')
-
-class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
-    model = Label
-    template_name = 'label_delete_form.html'
-    success_url = reverse_lazy('tasks:labels_list')
-    success_message = _('label was successfully deleted')
-    protected_message = _("You don't have permissions to delete this label")
-
-    # def delete(self, request, *args, **kwargs):
-    #     try:
-    #         result = super().delete(request, *args, **kwargs)
-    #         messages.success(request, self.success_message)
-    #         return result
-    #     except Exception:
-    #         messages.error(request, self.protected_message)
-    #     return redirect(self.success_url)

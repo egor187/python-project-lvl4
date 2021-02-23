@@ -1,23 +1,21 @@
-from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, SetPasswordForm
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import FormView,\
+    CreateView,\
+    UpdateView,\
+    DeleteView
 from users.models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
 from django.core.paginator import Paginator
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
-from django.contrib.auth.password_validation import validate_password
 from .forms import CustomUserUpdateForm
 from .forms import CustomUserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.views import PasswordChangeView
+
 
 class ListUserView(generic.ListView):
     model = CustomUser
@@ -43,14 +41,6 @@ class CreateUserView(SuccessMessageMixin, CreateView, FormView):
     success_message = _('Пользователь успешно зарегистрирован')
 
 
-# class LoginUserView(SuccessMessageMixin, LoginView):
-#     success_message = _('%(username)s was successfully login')
-#
-#
-# class LogoutUserView(SuccessMessageMixin, LogoutView):
-#     success_message = _('%(username)s was successfully logout')
-
-
 class PasswordChangeUserView(SuccessMessageMixin, PasswordChangeView):
     success_message = _('Password was successfully changed')
     success_url = reverse_lazy('users:user_list')
@@ -64,11 +54,13 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     not_owner_message = _('You are not permitted to this action')
     success_message = _('Пользователь успешно изменён')
 
-    # Redirect from update_form if pk in request different from page where update_form form
-    # URLdispatcher capture <int:pk> as keyword arg (**kwargs) for pass to view (UpdateUserView). So, you may
-    # compare value of kwarg['pk'] (which made by generic ListView from a model in template user_index.html)
-    # with current pk of user in request object - django auth middware add object user to request, so "request.user.pk"
-    # contains pk of currently authenticated user.
+    # Redirect from update_form if pk in request different from page
+    # where update_form formURLdispatcher capture <int:pk> as keyword
+    # arg (**kwargs) for pass to view (UpdateUserView). So, you may
+    # compare value of kwarg['pk'] (which made by generic ListView from a
+    # model in template user_index.html) with current pk of user in request
+    # object - django auth middware add object user to request, so
+    # "request.user.pk" contains pk of currently authenticated user.
     def dispatch(self, request, *args, **kwargs):
         if kwargs['pk'] != request.user.pk:
             messages.error(request, self.not_owner_message)
@@ -80,14 +72,19 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-
-class DeleteUserView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class DeleteUserView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
     model = CustomUser
     success_url = '/users/'
 
     not_owner_redirect_url = reverse_lazy('users:user_list')
     not_owner_message = _('You are not owner for this action')
-    protected_message = _('Нельзя удалить пользователя, который назначен исполнителем задачи')
+    protected_message = _(
+        'Нельзя удалить пользователя, который назначен исполнителем задачи'
+    )
     success_message = 'Пользователь успешно удалён'
 
     def handle_no_permission(self):

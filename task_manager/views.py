@@ -1,5 +1,14 @@
-from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.shortcuts import render, redirect
+from tasks.models import TaskStatus, Label
+from django.urls import reverse_lazy
+from django.views import generic
+from django.contrib import messages
+from django.views.generic import edit
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.translation import gettext as _
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 def index(request):
@@ -31,12 +40,6 @@ class Index(TemplateView):
         context['num_visits'] = num_visits
         return context
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# INSERT USERS_LOGIN/LOGOUT INTO TASK_MANAGER
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.utils.translation import gettext as _
-
 
 class LoginUserView(SuccessMessageMixin, LoginView):
     success_message = _('%(username)s was successfully login')
@@ -44,19 +47,6 @@ class LoginUserView(SuccessMessageMixin, LoginView):
 
 class LogoutUserView(SuccessMessageMixin, LogoutView):
     success_message = _('%(username)s was successfully logout')
-
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# INSERT USERS:LABELS INTO TASK_MANAGER
-from django.shortcuts import render, redirect
-from tasks.models import Task, TaskStatus, Label
-from django.urls import reverse_lazy
-from django.views import generic
-from django.contrib import messages
-from django.views.generic import edit
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import gettext as _
-from tasks.filters import TaskFilter
 
 
 class ListLabelsView(generic.ListView):
@@ -69,7 +59,11 @@ class LabelView(generic.DetailView):
     template_name = 'label_view.html'
 
 
-class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+class CreateLabelView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.CreateView
+):
     model = Label
     fields = '__all__'
     template_name = 'label_create_form.html'
@@ -77,7 +71,11 @@ class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     success_message = _('Метка успешно создана')
 
 
-class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+class UpdateLabelView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.UpdateView
+):
     model = Label
     fields = '__all__'
     template_name = 'label_update_form.html'
@@ -85,15 +83,20 @@ class UpdateLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     success_message = _('Метка успешно изменена')
 
 
-class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+class DeleteLabelView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.DeleteView
+):
     model = Label
     template_name = 'label_delete_form.html'
     success_url = reverse_lazy('labels_list')
     success_message = _('Метка успешно удалена')
     protected_message = _("Метку, которая связана с задачей, нельзя удалить")
 
-    # solution from stackoverflow (because SuccessMessageMixin works through form_valid(), which is present in
-    # CreateView and UpdateView but not in DeleteView)
+    # solution from stackoverflow (because SuccessMessageMixin works through
+    # form_valid(), which is present in CreateView and UpdateView but not
+    # in DeleteView)
     # def delete(self, request, *args, **kwargs):
     #     messages.success(self.request, self.success_message)
     #     return super().delete(request, *args, **kwargs)
@@ -109,8 +112,6 @@ class DeleteLabelView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
         return redirect(self.success_url)
 
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# INSERT USERS:LABELS INTO TASK_MANAGER
 class ListStatusesView(generic.ListView):
     model = TaskStatus
     template_name = 'statuses_index.html'
@@ -120,7 +121,11 @@ class StatusView(generic.DetailView):
     model = TaskStatus
 
 
-class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
+class CreateStatusView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.CreateView
+):
     model = TaskStatus
     fields = [
         'name',
@@ -130,7 +135,11 @@ class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView)
     success_message = _('Статус успешно создан')
 
 
-class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
+class UpdateStatusView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.UpdateView
+):
     model = TaskStatus
     fields = [
         'name',
@@ -140,7 +149,11 @@ class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView)
     success_message = _('Статус успешно изменён')
 
 
-class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+class DeleteStatusView(
+    LoginRequiredMixin,
+    SuccessMessageMixin,
+    edit.DeleteView
+):
     model = TaskStatus
     fields = [
         'name',
