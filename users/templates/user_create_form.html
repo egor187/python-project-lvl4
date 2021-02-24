@@ -3,13 +3,13 @@
 {% load bootstrap4 %}
 
 {% block welcome %}
-    <h1 class="mb-4">{% translate "Регистрация" %}</h1>
+    <h1 class="mb-4">{% translate "Registration" %}</h1>
 
     <form method="POST" action="{% url 'users:create_user' %}">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="{% translate 'Зарегистрировать' %}">
+            <input class="btn btn-primary" type="submit" value="{% translate 'Register' %}">
         </div>
     </form>
 {% endblock %}

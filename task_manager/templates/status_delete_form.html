@@ -9,11 +9,11 @@
 {% endif %}
 
 {% block welcome %}
-    <h1 class="mb-4">{% translate "Status deletion" %}</h1>
+    <h1 class="mb-4">{% translate "Status delete" %}</h1>
 
     <form method="post" action="{% url 'delete_status' object.pk %}">
         {% csrf_token %}
-        <p>{% translate "Are you sure you want to delete" %} {{ object.name }}?</p>
+        <p>{% translate "Are you sure you want to delete" %} "{{ object.name }}" status?</p>
         <div class="form-group">
             <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
             <a class="btn btn-info" href={% url 'statuses_list' %}>{% translate 'No, I change my mind' %}"</a>

@@ -12,8 +12,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
-from .forms import CustomUserUpdateForm
-from .forms import CustomUserCreationForm
+from .forms import CustomUserUpdateForm, CustomUserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 
 
@@ -38,24 +37,24 @@ class CreateUserView(SuccessMessageMixin, CreateView, FormView):
     model = CustomUser
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    success_message = _('Пользователь успешно зарегистрирован')
+    success_message = _(f'User %(username)s created successfully') #TODO check this feature
 
 
 class PasswordChangeUserView(SuccessMessageMixin, PasswordChangeView):
-    success_message = _('Password was successfully changed')
+    success_message = _('Password changed successfully')
     success_url = reverse_lazy('users:user_list')
 
 
 class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
-    # Use from_class to add password1/password2 fields from UserCreationFrom()
+    # Use from_class for add password1/password2 fields purpose from UserCreationFrom()
     form_class = CustomUserUpdateForm
     not_owner_redirect_url = reverse_lazy('users:user_list')
-    not_owner_message = _('You are not permitted to this action')
-    success_message = _('Пользователь успешно изменён')
+    not_owner_message = _('Only the owner of the account can change it')
+    success_message = _(f'User %(user)s created successfully') #TODO check this feature
 
     # Redirect from update_form if pk in request different from page
-    # where update_form formURLdispatcher capture <int:pk> as keyword
+    # where update_form form: URLdispatcher capture <int:pk> as keyword
     # arg (**kwargs) for pass to view (UpdateUserView). So, you may
     # compare value of kwarg['pk'] (which made by generic ListView from a
     # model in template user_index.html) with current pk of user in request
@@ -65,10 +64,6 @@ class UpdateUserView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         if kwargs['pk'] != request.user.pk:
             messages.error(request, self.not_owner_message)
             return redirect(self.not_owner_redirect_url)
-        # try:
-        #     validate_password('123')
-        # except ValidationError as e:
-        #     return e
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -81,28 +76,28 @@ class DeleteUserView(
     success_url = '/users/'
 
     not_owner_redirect_url = reverse_lazy('users:user_list')
-    not_owner_message = _('You are not owner for this action')
+    not_owner_message = _('Only the owner of the account can delete it')
     protected_message = _(
-        'Нельзя удалить пользователя, который назначен исполнителем задачи'
+        "You can't delete the user who's assigned as the executor of the task"
     )
-    success_message = 'Пользователь успешно удалён'
+    success_message = _('User %(user)s created successfully')
+    warning_delete_message = _('This action is irrevocable')
 
-    def handle_no_permission(self):
-        messages.error(self.request, self.no_permissions_message)
-        return super().handle_no_permission()
+    # def handle_no_permission(self):
+    #     messages.error(self.request, self.no_permissions_message)
+    #     return super().handle_no_permission()
 
     def dispatch(self, request, *args, **kwargs):
         if kwargs['pk'] != request.user.pk:
-            if self.not_owner_message:
-                messages.error(request, self.not_owner_message)
+            messages.error(request, self.not_owner_message)
             return redirect(self.not_owner_redirect_url)
+        messages.error(request, self.warning_delete_message)
         return super().dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         try:
             result = super().delete(request, *args, **kwargs)
-            if self.success_message:
-                messages.success(request, self.success_message)
+            messages.success(request, self.success_message)
             return result
         except Exception:
             messages.error(request, self.protected_message)

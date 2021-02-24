@@ -7,12 +7,12 @@
     <div class="col-sm-8 mx-auto pt-5">
         <div class="card">
             <div class="card-title bg-success text-white p-3">
-                <p class="h4">Страница профиля</p>
+                <p class="h4">Profile page</p>
             </div>
             <div class="card-body">
                 <p>Почта: {{ object.username }}</p>
                 <a href="{% url 'users:password_reset' %}" class="btn btn-success">
-                    {% translate "Поменять пароль" %}
+                    {% translate "Change password" %}
                 </a>
             </div>
         </div>

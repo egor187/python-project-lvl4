@@ -98,15 +98,12 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': os.getenv('DB_NAME_HEROKU'),
-        # 'USER': os.getenv('DB_USER_HEROKU'),
-        # 'PASSWORD': os.getenv('DB_PASSWORD_HEROKU'),
-        # 'HOST': 'ec2-52-70-135-246.compute-1.amazonaws.com',
-        # 'PORT': '5432',
-
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME_HEROKU'),
+        'USER': os.getenv('DB_USER_HEROKU'),
+        'PASSWORD': os.getenv('DB_PASSWORD_HEROKU'),
+        'HOST': 'ec2-52-70-135-246.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 # if testing (sys.argv contain 'test') db settings set to
@@ -145,7 +142,7 @@ LOGOUT_REDIRECT_URL = 'home'
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en-En'
 
 # List of acceptable languages for app  for i18n purpose
 LANGUAGES = [

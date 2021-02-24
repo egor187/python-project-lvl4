@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-20 10:14+0300\n"
+"POT-Creation-Date: 2021-02-24 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,243 +20,176 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: settings.py:151
+#: task_manager/settings.py:149
 msgid "English"
-msgstr "Английский"
+msgstr ""
 
-#: settings.py:152
+#: task_manager/settings.py:150
 msgid "Russian"
 msgstr "Русский"
 
-#: templates/index.html:28 templates/login.html:15
-msgid "Разлогиниться"
-msgstr "Разлогиниться"
+#: task_manager/templates/index.html:15
+msgid "Home page"
+msgstr "Домашняя страница"
 
-#: templates/index.html:37
-msgid "Домой"
+#: task_manager/templates/index.html:28
+msgid "Logout"
+msgstr "Выйти из ситемы"
+
+#: task_manager/templates/index.html:37
+msgid "Home"
 msgstr "Домой"
 
-#: templates/index.html:38
-msgid "Пользователи"
+#: task_manager/templates/index.html:38
+msgid "Users"
 msgstr "Пользователи"
 
-#: templates/index.html:41 templates/login.html:18
-msgid "Залогиниться"
-msgstr "Залогиниться"
+#: task_manager/templates/index.html:41 task_manager/templates/login.html:16
+#: task_manager/templates/login.html:35
+msgid "Login"
+msgstr "Войти в систему"
 
-#: templates/index.html:44
-msgid "Статусы"
+#: task_manager/templates/index.html:44
+msgid "Statuses"
 msgstr "Статусы"
 
-#: templates/index.html:45
-msgid "Задачи"
+#: task_manager/templates/index.html:45
+msgid "Tasks"
 msgstr "Задачи"
 
-#: templates/index.html:46
-msgid "Метки"
+#: task_manager/templates/index.html:46
+msgid "Labels"
 msgstr "Метки"
 
-#: templates/index.html:47 templates/login.html:29 templates/login.html:51
-msgid "Создать нового пользователя"
-msgstr "Создать нового пользователя"
+#: task_manager/templates/index.html:47
+msgid "Register"
+msgstr "Зарегистрироваться"
 
-#: templates/index.html:59
-msgid "Welcome to my FINAL hexlet project"
-msgstr "Приветствую на странице моего ФИНАЛЬНОГО проекта на Хекслет"
+#: task_manager/templates/index.html:59
+msgid "Welcome to Task manager django web app"
+msgstr "Добро пожаловать на страницу вэб-приложения django 'Task manager'"
 
-#: templates/index.html:61
-msgid "Gonna make django app and deploy it in heroku PaaS"
-msgstr "Делаю django-приложение и деплою на платформу Heroku"
-
-#: templates/label_create_form.html:6 templates/labels_index.html:37
-msgid "Создать метку"
+#: task_manager/templates/label_create_form.html:6
+msgid "Create label"
 msgstr "Создать метку"
 
-#: templates/label_create_form.html:12 templates/status_create_form.html:12
-#, fuzzy
-#| msgid "Создать метку"
-msgid "Создать"
+#: task_manager/templates/label_create_form.html:12
+#: task_manager/templates/status_create_form.html:12
+msgid "Create"
 msgstr "Создать"
 
-#: templates/label_delete_form.html:6
-msgid "Label deletion"
+#: task_manager/templates/label_delete_form.html:6
+msgid "Label delete"
 msgstr "Удаление метки"
 
-#: templates/label_delete_form.html:10 templates/status_delete_form.html:9
+#: task_manager/templates/label_delete_form.html:10
+#: task_manager/templates/status_delete_form.html:16
 msgid "Are you sure you want to delete"
-msgstr "Вы увеерены что хотите удалить"
+msgstr "Вы действительно хотите удалить"
 
-#: templates/label_delete_form.html:12 templates/status_delete_form.html:11
+#: task_manager/templates/label_delete_form.html:12
+#: task_manager/templates/status_delete_form.html:18
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/label_delete_form.html:13 templates/status_delete_form.html:12
+#: task_manager/templates/label_delete_form.html:13
+#: task_manager/templates/status_delete_form.html:19
 msgid "No, I change my mind"
 msgstr "Нет, я передумал"
 
-#: templates/label_update_form.html:6
+#: task_manager/templates/label_update_form.html:6
 msgid "Label update form"
-msgstr "Форма обновления метки"
+msgstr "Изменение метки"
 
-#: templates/label_update_form.html:12
+#: task_manager/templates/label_update_form.html:12
+#: task_manager/templates/status_update_form.html:12
 msgid "Update"
-msgstr "Изменить"
-
-#: templates/label_view.html:30 templates/status_view.html:22
-#, fuzzy
-#| msgid "Разлогиниться"
-msgid "Изменить"
-msgstr "Изменить"
-
-#: templates/label_view.html:31 templates/status_view.html:23
-msgid "Удалить"
-msgstr "Удалить"
-
-#: templates/login.html:35
-msgid "Вы уже залогинились"
-msgstr "Вы уже залогинились"
-
-#: templates/login.html:42
-msgid "Пожалуйста, залогиньтесь"
-msgstr "Пожалуйста, залогиньтесь"
-
-#: templates/login.html:53
-msgid "Забыли пароль?"
-msgstr "Забыли пароль?"
-
-#: templates/status_create_form.html:6
-#, fuzzy
-#| msgid "Create new user"
-msgid "Create new status for tasks"
-msgstr "Создать новый статус для задачи"
-
-#: templates/status_delete_form.html:5
-#, fuzzy
-#| msgid "Label deletion"
-msgid "Status deletion"
-msgstr "Удаление метки"
-
-#: templates/status_update_form.html:6
-#, fuzzy
-#| msgid "Label update form"
-msgid "Status update form"
-msgstr "Форма обновления статуса"
-
-#: templates/status_update_form.html:12
-msgid "Обновить"
 msgstr "Обновить"
 
-#: templates/statuses_index.html:30
-#, fuzzy
-#| msgid "Создать метку"
-msgid "Создать статус"
+#: task_manager/templates/label_view.html:30
+#: task_manager/templates/status_view.html:22
+msgid "Change"
+msgstr "Изменить"
+
+#: task_manager/templates/label_view.html:31
+#: task_manager/templates/status_view.html:23
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/labels_index.html:35
+msgid "Create new label"
+msgstr "Создать новую метку"
+
+#: task_manager/templates/login.html:31
+msgid "Please, login"
+msgstr "Пожалуйста, войдите в систему"
+
+#: task_manager/templates/login.html:38
+msgid "Register new user"
+msgstr "Зарегистрировать нового пользователя"
+
+#: task_manager/templates/login.html:40
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: task_manager/templates/status_create_form.html:6
+msgid "Create new status for tasks"
+msgstr "Создать новый статус для задач"
+
+#: task_manager/templates/status_delete_form.html:12
+msgid "Status delete"
+msgstr "Удаление статуса"
+
+#: task_manager/templates/status_update_form.html:6
+msgid "Status update form"
+msgstr "Изменение статуса"
+
+#: task_manager/templates/statuses_index.html:35
+msgid "Create status"
 msgstr "Создать статус"
 
-#: views.py:42
+#: task_manager/views.py:45
 #, python-format
 msgid "%(username)s was successfully login"
-msgstr "%(username)s был успешно залогинен"
+msgstr "%(username)s успешно вошел в систему"
 
-#: views.py:46
+#: task_manager/views.py:49
 #, python-format
 msgid "%(username)s was successfully logout"
-msgstr "%(username)s был успешно разлогинен"
+msgstr "%(username)s успешно вышел из системы"
 
-#: views.py:77
-msgid "Метка успешно создана"
-msgstr "Метка успешно создана"
+#: task_manager/views.py:71
+#, python-format
+msgid "Label \"%(name)s\" created successfully"
+msgstr "Метка \"%(name)s\" успешно создана"
 
-#: views.py:85
-#, fuzzy
-#| msgid "Метка успешно обновлена"
-msgid "Метка успешно изменена"
-msgstr "Метка успешно обновлена"
+#: task_manager/views.py:83
+#, python-format
+msgid "Label \"%(name)s\" updated successfully"
+msgstr "Метка \"%(name)s\" успешно изменена"
 
-#: views.py:92
-msgid "Метка успешно удалена"
+#: task_manager/views.py:94
+msgid "Label deleted successfully"
 msgstr "Метка успешно удалена"
 
-#: views.py:93
-msgid "You don't have permissions to delete this label"
-msgstr "У Вас нет необхожимых правт для удаления этой метки"
+#: task_manager/views.py:95
+msgid "You can't delete a label that's associated with a task"
+msgstr "Вы не можете удалить метку, связанную с задачей"
 
-#: views.py:130
-#, fuzzy
-#| msgid "Метка успешно создана"
-msgid "Статус успешно создан"
-msgstr "Статус успешно создан"
+#: task_manager/views.py:137
+#, python-format
+msgid "Status \"%(name)s\" created successfully"
+msgstr "Статус \"%(name)s\" успешно создан"
 
-#: views.py:140
-#, fuzzy
-#| msgid "Метка успешно обновлена"
-msgid "Статус успешно изменен"
-msgstr "Статус успешно изменен"
+#: task_manager/views.py:151
+#, python-format
+msgid "Status \"%(name)s\" updated successfully"
+msgstr "Статус \"%(name)s\" успешно изменен"
 
-#: views.py:150
-#, fuzzy
-#| msgid "Метка успешно удалена"
-msgid "Статус успешно удален"
+#: task_manager/views.py:165
+msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
-#: views.py:151
-msgid "Нельзя удалить статус так как он используется"
-msgstr "Нельзя удалить статус так как он используется"
-
-#, fuzzy
-#~| msgid "You don't have permissions to delete this label"
-#~ msgid "You don't have permissions to delete this status"
-#~ msgstr "У Вас нет необхожимых правт для удаления этого статуса"
-
-#~ msgid "Create label"
-#~ msgstr "Создать метку"
-
-#~ msgid "Update label"
-#~ msgstr "Обновоить метку"
-
-#~ msgid "Delete label"
-#~ msgstr "Удалить метку"
-
-#, fuzzy
-#~| msgid "label was successfully deleted"
-#~ msgid "Label was successfully created"
-#~ msgstr "Метка успешно создана"
-
-#, fuzzy
-#~| msgid "label was successfully deleted"
-#~ msgid "Label was successfully updated"
-#~ msgstr "Метка успешно обновлена"
-
-#, fuzzy
-#~| msgid "label was successfully deleted"
-#~ msgid "Label was successfully deleted"
-#~ msgstr "Метка успешно удалена"
-
-#~ msgid "\"%(name)s\" - label was successfully created"
-#~ msgstr "\"%(name)s\" - метка было успешно создана"
-
-#~ msgid "\"%(name)s\" - label was successfully updated"
-#~ msgstr "\"%(name)s\" - метка была успешно обновлена"
-
-#~ msgid "Home"
-#~ msgstr "Начало"
-
-#~ msgid "Users"
-#~ msgstr "Пользователи"
-
-#~ msgid "Logout"
-#~ msgstr "Выйти из системы"
-
-#~ msgid "Login"
-#~ msgstr "Войти в систему"
-
-#~ msgid "Using cover for hexlet task template for"
-#~ msgstr "Используется шаблон 'cover' по заданию Хеклет"
-
-#~ msgid "Features"
-#~ msgstr "Фишки"
-
-#~ msgid "Contact"
-#~ msgstr "Контакты"
-
-#~ msgid "What's next"
-#~ msgstr "Что дальше"
+#: task_manager/views.py:166
+msgid "You can't delete a status that's associated with a task"
+msgstr "Вы не можете удалить статус, связанный с задачей"

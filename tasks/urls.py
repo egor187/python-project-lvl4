@@ -20,6 +20,6 @@ urlpatterns = [
         views.DeleteTaskView.as_view(),
         name='delete_task'
     ),
-    path('filter/', FilterView.as_view(model=TaskFilter), name='filter_task'),
-    path('filter/', FilterView.as_view(model=Task), name='filter_task'),
+    # path('filter/', FilterView.as_view(model=TaskFilter), name='filter_task'),
+    # path('filter/', FilterView.as_view(model=Task), name='filter_task'),
 ]

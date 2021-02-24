@@ -3,13 +3,13 @@
 {% load bootstrap4 %}
 
 {% block welcome %}
-    <h1 class="mb-4">{% translate "Создать метку" %}</h1>
+    <h1 class="mb-4">{% translate "Create label" %}</h1>
 
     <form method="POST" action="{% url 'create_label' %}">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="{% translate 'Создать' %}">
+            <input class="btn btn-primary" type="submit" value="{% translate 'Create' %}">
         </div>
     </form>
 {% endblock %}

@@ -13,26 +13,24 @@
 	<h1>Labels</h1>
 		<table border="2" align="center">
 			<tr>
-				<th>Название метки</th>
-				<th>Связанные задачи</th>
-				<th>Изменение метки</th>
+				<th>Name</th>
+				<th>Linked tasks</th>
 			</tr>
 			{% for label in object_list %}
 				<tr>
-					<td><a href={% url 'label' label.id %}>{{ label.name }}</a></td>
+					<td><div class="nav-link">{{ label.name }}</div></td>
 					<td>
 						{% for task in label.task_set.all %}
-							<a class="badge badge-infop-2" href={% url 'label' label.id %}>"{{ task }}"</a>
-
+							<a href={% url 'tasks:task' task.pk %}>"{{ task }}"</a>
 						{% endfor %}
 					</td>
-					<td>
-						<a class="badge badge-infop-2" href={% url 'update_label' label.id %}>Изменить</a>
-						<a class="badge badge-infop-2" href={% url 'delete_label' label.id %}>Удалить</a>
-					</td>
+					<th>
+						<a class="btn btn-success" href={% url 'update_label' label.id %}>Change</a>
+						<a class="btn btn-danger" href={% url 'delete_label' label.id %}>Delete</a>
+					</th>
 				</tr>
 			{% endfor %}
 		</table>
-
-	<a class="btn btn-primary" href={% url 'create_label' %}>{% translate "Создать метку" %}</a>
+	<br>
+	<a class="btn btn-primary" href={% url 'create_label' %}>{% translate "Create new label" %}</a>
 {% endblock %}

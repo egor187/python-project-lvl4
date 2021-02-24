@@ -10,70 +10,6 @@ from django.utils.translation import gettext as _
 from tasks.filters import TaskFilter
 
 
-class ListStatusesView(generic.ListView):
-    model = TaskStatus
-    template_name = 'statuses_index.html'
-
-
-class StatusView(generic.DetailView):
-    model = TaskStatus
-
-
-class CreateStatusView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    edit.CreateView
-):
-    model = TaskStatus
-    fields = [
-        'name',
-    ]
-    template_name = 'status_create_form.html'
-    success_url = reverse_lazy('tasks:statuses_list')
-    success_message = _('"%(name)s"-status was successfully created')
-
-
-class UpdateStatusView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    edit.UpdateView
-):
-    model = TaskStatus
-    fields = [
-        'name',
-    ]
-    template_name = 'status_update_form.html'
-    success_url = reverse_lazy('tasks:statuses_list')
-    success_message = _('"%(name)s"-status was successfully updated')
-
-
-class DeleteStatusView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    edit.DeleteView
-):
-    model = TaskStatus
-    fields = [
-        'name',
-    ]
-    template_name = 'status_delete_form.html'
-    success_url = reverse_lazy('tasks:statuses_list')
-    success_message = _('status was successfully deleted')
-    protected_message = _("You don't have permissions to delete this status")
-
-    # Override class method for add messages.
-    def delete(self, request, *args, **kwargs):
-        try:
-            result = super().delete(request, *args, **kwargs)
-            if self.success_message:
-                messages.success(request, self.success_message)
-            return result
-        except Exception:
-            if self.protected_message:
-                messages.error(request, self.protected_message)
-            return redirect(self.success_url)
-
-
 class ListTasksView(generic.ListView):
     model = Task
     template_name = 'tasks_index.html'
@@ -117,7 +53,7 @@ class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.CreateView):
     fields = '__all__'
     template_name = 'task_create_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('Задача успешно создана')
+    success_message = _('Task %(name)s created successfully')
 
     # override class-method to achieve auto increment form field
     # "creator" with current autheticated user
@@ -132,18 +68,18 @@ class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.UpdateView):
     fields = '__all__'
     template_name = 'task_update_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('Задача успешно изменена')
+    success_message = _('Task %(name)s updated successfully')
 
 
-class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView):
+class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, edit.DeleteView, edit.CreateView):
     model = Task
     fields = [
         'name'
     ]
     template_name = 'task_delete_form.html'
     success_url = reverse_lazy('tasks:tasks_list')
-    success_message = _('Задача успешно удалена')
-    protected_message = _("Нельзя удалить задачу, к которой привязана метка")
+    success_message = _('Task deleted successfully')
+    protected_message = _("You can't delete a task that's associated with a label")
 
     def delete(self, request, *args, **kwargs):
         try:

@@ -13,7 +13,7 @@ class TaskFilter(django_filters.FilterSet):
     new_name = django_filters.ModelMultipleChoiceFilter(
         queryset=Label.objects.all(),
         field_name='labels',
-        label='Метка'
+        label='Label'
     )
 
     class Meta:

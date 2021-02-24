@@ -11,13 +11,35 @@
 
 {% block welcome %}
 <body class="text-center">
-	<p class="lead"> Username:	{{ object.username}}</p>
-	<p class="lead"> Firstname:	{{object.first_name}}</p>
-	<p class="lead"> Lastname:	{{object.last_name}}</p>
-	<p class="lead"> Email:		{{object.email}} </p>
+<table border="2" align="center" class="row h-auto mb-4" cellpadding="7">
+	<tr>
+		<th>User ID</th>
+		<th>Nickname </th>
+		<th>Name</th>
+		<th>E-mail</th>
+		<th>Created tasks</th>
+		<th>Assigned tasks</th>
+	</tr>
+		<tr>
+			<td><a href={% url 'users:user' object.id %}>{{ object.id }}</a></td>
+			<td><a href={% url 'users:user' object.id %}>{{ object.username }}</a></td>
+			<td><a href={% url 'users:user' object.id %}>{{ object }}</a></td>
+			<td><a href={% url 'users:user' object.id %}>{{ object.email }}</a></td>
+			<td>
+				{% for task in object.creator.all %}
+					<a href={% url 'tasks:task' task.pk %}>"{{ task }}"</a>
+				{% endfor %}
+			</td>
+			<td>
+				{% for task in object.executor.all %}
+					<a href={% url 'tasks:task' task.pk %}>"{{ task }}"</a>
+				{% endfor %}
+			</td>
+		</tr>
+</table>
 
-	<a href={% url 'users:update_user' object.id %}>{% translate "Изменить профиль" %}</a>
-	<a href={% url 'users:delete_user' object.id %}>{% translate "Удалить профиль" %}</a>
-	<a href={% url 'users:password_change' %}>{% translate "Изменить пароль" %}</a>
+	<a class="btn btn-success" href={% url 'users:update_user' object.id %}>Change</a>
+	<a class="btn btn-danger" href={% url 'users:delete_user' object.id %}>Delete</a>
+	<a class="btn btn-primary" href={% url 'users:password_change' %}>{% translate "Change password" %}</a>
 </body>
 {% endblock welcome %}

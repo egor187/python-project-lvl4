@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-20 11:51+0300\n"
+"POT-Creation-Date: 2021-02-24 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,147 +20,87 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/password_change_form.html:6
-msgid "Форма изменения пароля"
-msgstr "Форма изменения пароля"
-
-#: templates/password_change_form.html:12 templates/user_create_form.html:6
-#: templates/user_update.html:12
-msgid "Регистрация"
-msgstr "Регистрация"
-
-#: templates/profile.html:15
-msgid "Поменять пароль"
-msgstr "Поменять пароль"
-
-#: templates/user_create_form.html:12
+#: users/templates/password_change_form.html:6
 #, fuzzy
-#| msgid "Регистрация"
-msgid "Зарегистрировать"
+#| msgid "Change password"
+msgid "Change password form"
+msgstr "Изменить пароль"
+
+#: users/templates/password_change_form.html:12
+#: users/templates/user_create_form.html:12
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: users/templates/profile.html:15 users/templates/user_view.html:43
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: users/templates/user_create_form.html:6
+msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/user_delete.html:5
-msgid "Удаление пользователя"
+#: users/templates/user_delete.html:5
+msgid "User delete"
 msgstr "Удаление пользователя"
 
-#: templates/user_delete.html:9
-msgid "Вы действительно хотите удалить пользователя"
-msgstr "Вы действительно хотите удалить пользователя"
+#: users/templates/user_delete.html:9
+msgid "Are you sure want to delete account for"
+msgstr "Вы уверены, что хотите удалить профиль для"
 
-#: templates/user_delete.html:11
-msgid "Да, удалить"
+#: users/templates/user_delete.html:11
+msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/user_delete.html:12
-msgid "Нет, я передумал"
+#: users/templates/user_delete.html:12
+msgid "No, I've changed my mind"
 msgstr "Нет, я передумал"
 
-#: templates/user_index.html:11
+#: users/templates/user_index.html:11
 msgid "previous"
-msgstr "предыдущая"
+msgstr "Предыдущая"
 
-#: templates/user_index.html:12
+#: users/templates/user_index.html:12
 msgid "next"
 msgstr "следующая"
 
-#: templates/user_index.html:13
+#: users/templates/user_index.html:13
 msgid "last"
 msgstr "последняя"
 
-#: templates/user_update.html:6
-msgid "Форма изменения профиля пользователя"
-msgstr "Форма изменения профиля пользователя"
+#: users/templates/user_update.html:6
+msgid "Update user account"
+msgstr "Обновить профиль пользователя"
 
-#: templates/user_view.html:19
-msgid "Изменить профиль"
-msgstr "Изменить профиль"
+#: users/templates/user_update.html:12
+msgid "Update"
+msgstr "Обновить"
 
-#: templates/user_view.html:20
-msgid "Удалить профиль"
-msgstr "Удалить профиль"
+#: users/views.py:40
+#, python-format
+msgid "User %(username)s created successfully"
+msgstr "Пользователь %(username)s успешно создан"
 
-#: templates/user_view.html:21
-msgid "Изменить пароль"
-msgstr "Изменить пароль"
+#: users/views.py:44
+msgid "Password changed successfully"
+msgstr "Пароль успешно изменен"
 
-#: views.py:41
-#, fuzzy
-#| msgid "%(username)s was successfully created"
-msgid "User was successfully registered"
-msgstr "Пользователь успешно зарегистрирован"
+#: users/views.py:53
+msgid "Only the owner of the account can change it"
+msgstr "Только собственник профиля может его изменять"
 
-#: views.py:53
-msgid "Password was successfully changed"
-msgstr "Пароль был успешно изменен"
+#: users/views.py:54 users/views.py:83
+#, python-format
+msgid "User %(user)s created successfully"
+msgstr "Пользователь %(user)s успешно создан"
 
-#: views.py:69 views.py:91
-msgid "You are not permitted to this action"
-msgstr "У Вас нет доступа к данному действию"
+#: users/views.py:79
+msgid "Only the owner of the account can delete it"
+msgstr "Только собственник профиля может его удалить"
 
-#: views.py:70
-msgid "Profile updated"
-msgstr "Пользователь успешно изменен"
+#: users/views.py:81
+msgid "You can't delete the user who's assigned as the executor of the task"
+msgstr "Вы не можете удалить пользователя, который назначен исполнителем задачи"
 
-#: views.py:90
-msgid "You are not owner for this action"
-msgstr "Вы не владелец для этого действия"
-
-#~ msgid "Logout"
-#~ msgstr "Выйти из системы"
-
-#~ msgid "Login"
-#~ msgstr "Войти в систему"
-
-#~ msgid "Create new User"
-#~ msgstr "Создать нового Пользователя"
-
-#~ msgid "You have already logged in"
-#~ msgstr "Вы уже вошли в систему"
-
-#~ msgid "Please login"
-#~ msgstr "Пожалуйста, войдите в систему"
-
-#~ msgid "Create new user"
-#~ msgstr "Создать нового пользователя"
-
-#~ msgid "Lost password?"
-#~ msgstr "Забыли пароль?"
-
-#~ msgid "Change password form"
-#~ msgstr "Форма для изменения пароля"
-
-#~ msgid "Register"
-#~ msgstr "Регистрация"
-
-#~ msgid "Change Password"
-#~ msgstr "Изменить пароль"
-
-#~ msgid "Registration"
-#~ msgstr "Регистрация"
-
-#~ msgid "User deletion"
-#~ msgstr "Удаление пользователя"
-
-#~ msgid "Are you sure you want to delete"
-#~ msgstr "Вы уверены что хотите удалить?"
-
-#~ msgid "Yes, delete"
-#~ msgstr "Да, удалить"
-
-#~ msgid "Update form"
-#~ msgstr "Форма для обновления профиля"
-
-#~ msgid "Change account"
-#~ msgstr "Поменять профиль"
-
-#~ msgid "Delete account"
-#~ msgstr "Удалить профиль"
-
-#~ msgid "Change password"
-#~ msgstr "Изменить пароль"
-
-#~ msgid "%(username)s was successfully login"
-#~ msgstr "%(username)s успешно вошел в систему"
-
-#~ msgid "%(username)s was successfully logout"
-#~ msgstr "%(username)s успешно вышел из системы"
+#: users/views.py:84
+msgid "This action is irrevocable"
+msgstr "Это действие необратимо"

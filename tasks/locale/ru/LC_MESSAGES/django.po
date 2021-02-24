@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-21 11:17+0300\n"
+"POT-Creation-Date: 2021-02-24 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,145 +20,88 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/task_create_form.html:6 templates/tasks_index.html:70
-msgid "Создать задачу"
+#: tasks/templates/task_create_form.html:6
+msgid "Create task"
 msgstr "Создать задачу"
 
-#: templates/task_create_form.html:12
-msgid "Создать"
+#: tasks/templates/task_create_form.html:12
+msgid "Create"
 msgstr "Создать"
 
-#: templates/task_delete_form.html:5
+#: tasks/templates/task_delete_form.html:5
 msgid "Task deletion"
 msgstr "Удаление задачи"
 
-#: templates/task_delete_form.html:9
+#: tasks/templates/task_delete_form.html:9
 msgid "Are you sure you want to delete"
-msgstr "Вы уверены что хотите удалить"
+msgstr "Вы действительно хотите удалить задачу"
 
-#: templates/task_delete_form.html:11
+#: tasks/templates/task_delete_form.html:11
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/task_delete_form.html:12
+#: tasks/templates/task_delete_form.html:12
 msgid "No, I change my mind"
 msgstr "Нет, я передумал"
 
-#: templates/task_update_form.html:6
+#: tasks/templates/task_update_form.html:6
 msgid "Task update form"
-msgstr "Форма обновления задачи"
+msgstr "Обновление задачи"
 
-#: templates/task_update_form.html:12
-msgid "Изменить"
-msgstr "Изменить"
+#: tasks/templates/task_update_form.html:12
+msgid "Update"
+msgstr "Обновить"
 
-#: templates/task_view.html:37
+#: tasks/templates/task_view.html:16 tasks/templates/tasks_index.html:35
+msgid "Name"
+msgstr "Название"
+
+#: tasks/templates/task_view.html:17 tasks/templates/tasks_index.html:36
+msgid "Status"
+msgstr "Статус"
+
+#: tasks/templates/task_view.html:18 tasks/templates/tasks_index.html:37
+msgid "Creator"
+msgstr "Инициатор"
+
+#: tasks/templates/task_view.html:19 tasks/templates/tasks_index.html:38
+msgid "Executor"
+msgstr "Исполнитель"
+
+#: tasks/templates/task_view.html:20 tasks/templates/tasks_index.html:39
+msgid "Labels"
+msgstr "Метки"
+
+#: tasks/templates/task_view.html:21
+msgid "Description"
+msgstr "Описание"
+
+#: tasks/templates/task_view.html:37
 msgid "Update task"
 msgstr "Обновить задачу"
 
-#: templates/task_view.html:38
+#: tasks/templates/task_view.html:38
 msgid "Delete task"
 msgstr "Удалить задачу"
 
-#: views.py:85
-msgid "Задача успешно создана"
-msgstr "Задача успешно создана"
+#: tasks/templates/tasks_index.html:56
+msgid "Create new task"
+msgstr "Создать новую задачу"
 
-#: views.py:97
-#, fuzzy
-#| msgid "task was successfully deleted"
-msgid "Task was successfully updated"
-msgstr "Задача успешно обновлена"
+#: tasks/views.py:56
+#, python-format
+msgid "Task %(name)s created successfully"
+msgstr "Задача %(name)s успешно создана"
 
-#: views.py:106
-msgid "Задача успешно удалена"
+#: tasks/views.py:71
+#, python-format
+msgid "Task %(name)s updated successfully"
+msgstr "Задача %(name)s успешно обновлена"
+
+#: tasks/views.py:81
+msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
-#: views.py:107
-msgid "You don't have permissions to delete this status"
-msgstr "У Вас нет необходимых прав доступа для удаления данного статуса"
-
-#, fuzzy
-#~| msgid "task was successfully deleted"
-#~ msgid "Task was successfully created"
-#~ msgstr "Задача успешно создана"
-
-#, fuzzy
-#~| msgid "task was successfully deleted"
-#~ msgid "Task was successfully deleted"
-#~ msgstr "Задача успешно удалена"
-
-#~ msgid "\"%(name)s\" - task was successfully updated"
-#~ msgstr "\"%(name)s\" - задача была успешно обновлена"
-
-#~ msgid "Create new status for tasks"
-#~ msgstr "Создать новый статус для задачи"
-
-#~ msgid "Create"
-#~ msgstr "Создать"
-
-#~ msgid "Status deletion"
-#~ msgstr "Удаление статуса"
-
-#~ msgid "Status update form"
-#~ msgstr "Форма обновления статуса"
-
-#~ msgid "Update"
-#~ msgstr "Изменить"
-
-#~ msgid "Update status"
-#~ msgstr "Обновление статуса"
-
-#~ msgid "Delete status"
-#~ msgstr "Удалить статуса"
-
-#~ msgid "Create status"
-#~ msgstr "Создать статус"
-
-#~ msgid "Create new task"
-#~ msgstr "Создать новую задачу"
-
-#~ msgid "Create task"
-#~ msgstr "Создать задачу"
-
-#~ msgid "\"%(name)s\"-status was successfully created"
-#~ msgstr "\"%(name)s\"-статус был успешно создан"
-
-#~ msgid "\"%(name)s\"-status was successfully updated"
-#~ msgstr "\"%(name)s\"-статус был успешно обновлен"
-
-#~ msgid "status was successfully deleted"
-#~ msgstr "Статус был успешно удален"
-
-#~ msgid "\"%(name)s\" - task was successfully created"
-#~ msgstr "\"%(name)s\"- задача была успешно создана"
-
-#~ msgid "Create new label"
-#~ msgstr "Создать новую метку"
-
-#~ msgid "Label deletion"
-#~ msgstr "Удаление метки"
-
-#~ msgid "Label update form"
-#~ msgstr "Форма изменения метки"
-
-#~ msgid "Update label"
-#~ msgstr "Изменить метку"
-
-#~ msgid "Delete label"
-#~ msgstr "Удалить метку"
-
-#~ msgid "Create label"
-#~ msgstr "Создать метку"
-
-#~ msgid "\"%(name)s\" - label was successfully created"
-#~ msgstr "\"%(name)s\" - метка была успешно создана"
-
-#~ msgid "\"%(name)s\" - label was successfully updated"
-#~ msgstr "\"%(name)s\" - мета была успешно обновлена"
-
-#~ msgid "label was successfully deleted"
-#~ msgstr "Метка была успешно удалена"
-
-#~ msgid "You don't have permissions to delete this label"
-#~ msgstr "У Вас нет необхожимых прав доступа для удаления данной метки"
+#: tasks/views.py:82
+msgid "You can't delete a task that's associated with a label"
+msgstr "Вы не можете удалить задачу, связанную с меткой"

@@ -13,26 +13,24 @@
 	<h1>Statuses</h1>
 	<table border="2" align="center">
 		<tr>
-			<th>Название статуса</th>
-			<th>Изменение статуса</th>
+			<th>Name</th>
+			<th>Linked tasks</th>
 		</tr>
 		{% for status in object_list %}
 			<tr>
-				<td><a href={% url 'status' status.id %}>{{ status.name }}</a></td>
+				<td><div class="nav-link">{{ status.name }}</div></td>
 				<td>
-					<a href={% url 'update_status' status.id %}>Изменить</a>
-					<a href={% url 'delete_status' status.id %}>Удалить</a>
+					{% for task in status.task_set.all %}
+						<a href={% url 'tasks:task' task.pk %}>"{{ task }}"</a>
+					{% endfor %}
 				</td>
+				<th>
+					<a class="btn btn-success" href={% url 'update_status' status.id %}>Change</a>
+					<a class="btn btn-danger" href={% url 'delete_status' status.id %}>Delete</a>
+				</th>
 			</tr>
 
 		{% endfor %}
 	</table>
-	<a class="btn btn-primary" href={% url 'create_status' %}>{% translate "Создать статус" %}</a>
-
-
-
-<!--<div class="alert alert-success alert-dismissible fade show" role="alert">-->
-<!--        <button type="button" class="close" data-dismiss="alert" aria-label="close">×</button>-->
-<!--        Статус успешно удалён-->
-<!--    </div>-->
+	<a class="btn btn-primary" href={% url 'create_status' %}>{% translate "Create status" %}</a>
 {% endblock %}

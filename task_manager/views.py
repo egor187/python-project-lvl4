@@ -54,9 +54,9 @@ class ListLabelsView(generic.ListView):
     template_name = 'labels_index.html'
 
 
-class LabelView(generic.DetailView):
-    model = Label
-    template_name = 'label_view.html'
+# class LabelView(generic.DetailView):
+#     model = Label
+#     template_name = 'label_view.html'
 
 
 class CreateLabelView(
@@ -68,7 +68,7 @@ class CreateLabelView(
     fields = '__all__'
     template_name = 'label_create_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('Метка успешно создана')
+    success_message = _('Label "%(name)s" created successfully')
 
 
 class UpdateLabelView(
@@ -80,7 +80,7 @@ class UpdateLabelView(
     fields = '__all__'
     template_name = 'label_update_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('Метка успешно изменена')
+    success_message = _('Label "%(name)s" updated successfully')
 
 
 class DeleteLabelView(
@@ -91,12 +91,14 @@ class DeleteLabelView(
     model = Label
     template_name = 'label_delete_form.html'
     success_url = reverse_lazy('labels_list')
-    success_message = _('Метка успешно удалена')
-    protected_message = _("Метку, которая связана с задачей, нельзя удалить")
+    success_message = _('Label deleted successfully')
+    protected_message = _("You can't delete a label that's associated with a task")
 
-    # solution from stackoverflow (because SuccessMessageMixin works through
+
+    # solution from stackoverflow (because of SuccessMessageMixin works through
     # form_valid(), which is present in CreateView and UpdateView but not
-    # in DeleteView)
+    # in DeleteView that's why just define attr "success_message" in DeleteView class
+    # isn't enough)
     # def delete(self, request, *args, **kwargs):
     #     messages.success(self.request, self.success_message)
     #     return super().delete(request, *args, **kwargs)
@@ -117,8 +119,8 @@ class ListStatusesView(generic.ListView):
     template_name = 'statuses_index.html'
 
 
-class StatusView(generic.DetailView):
-    model = TaskStatus
+# class StatusView(generic.DetailView):
+#     model = TaskStatus
 
 
 class CreateStatusView(
@@ -132,7 +134,7 @@ class CreateStatusView(
     ]
     template_name = 'status_create_form.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = _('Статус успешно создан')
+    success_message = _('Status "%(name)s" created successfully')
 
 
 class UpdateStatusView(
@@ -146,7 +148,7 @@ class UpdateStatusView(
     ]
     template_name = 'status_update_form.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = _('Статус успешно изменён')
+    success_message = _('Status "%(name)s" updated successfully')
 
 
 class DeleteStatusView(
@@ -160,15 +162,14 @@ class DeleteStatusView(
     ]
     template_name = 'status_delete_form.html'
     success_url = reverse_lazy('statuses_list')
-    success_message = _('Статус успешно удалён')
-    protected_message = _("Нельзя удалить статус так как он используется")
+    success_message = _('Status deleted successfully')
+    protected_message = _("You can't delete a status that's associated with a task")
 
-    # Override class method for add messages.
+    # Override class method for add messages purpose.
     def delete(self, request, *args, **kwargs):
         try:
             result = super().delete(request, *args, **kwargs)
-            if self.success_message:
-                messages.success(request, self.success_message)
+            messages.success(request, self.success_message)
             return result
         except Exception:
             messages.error(request, self.protected_message)

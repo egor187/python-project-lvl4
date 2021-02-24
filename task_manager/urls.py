@@ -44,11 +44,11 @@ urlpatterns = [
         views.ListLabelsView.as_view(),
         name='labels_list'
     ),
-    path(
-        'labels/<int:pk>/',
-        views.LabelView.as_view(),
-        name='label'
-    ),
+    # path(
+    #     'labels/<int:pk>/',
+    #     views.LabelView.as_view(),
+    #     name='label'
+    # ),
     path(
         'labels/create/',
         views.CreateLabelView.as_view(),
@@ -70,11 +70,11 @@ urlpatterns = [
         views.ListStatusesView.as_view(),
         name='statuses_list'
     ),
-    path(
-        'statuses/<int:pk>/',
-        views.StatusView.as_view(template_name='status_view.html'),
-        name='status'
-    ),
+    # path(
+    #     'statuses/<int:pk>/',
+    #     views.StatusView.as_view(template_name='status_view.html'),
+    #     name='status'
+    # ),
     path(
         'statuses/create/',
         views.CreateStatusView.as_view(),

@@ -18,13 +18,9 @@
 		{% if user.is_authenticated %}
 
 		<div class="form-check">
-			<label class="form-check-label" for="id_self_tasks">Только свои задачи</label>
+			<label class="form-check-label" for="id_self_tasks">Self tasks</label>
 			<input type="checkbox" name="self_tasks" id="id_self_tasks">
 		</div>
-
-<!--		<a href="{% url 'tasks:tasks_list' %}?creator={{request.user.pk}}" class="btn btn-success">-->
-<!--        	Только свои задачи-->
-<!--    	</a>-->
 		{% endif %}
 		{% bootstrap_button "Показать" button_class="btn-success" %}
 
@@ -34,14 +30,13 @@
 	</form>
 
 		<h1>Tasks</h1>
-		<table border="2" align="center">
+		<table border="2" align="center" class="row h-auto mb-4" cellpadding="7">
 			<tr>
-				<th>Имя</th>
-				<th>Статус задачи</th>
-				<th>Инициатор задачи</th>
-				<th>Исполнитель задачи</th>
-				<th>Метки</th>
-				<th>Изменение задачи</th>
+				<th>{% translate "Name" %}</th>
+				<th>{% translate "Status" %}</th>
+				<th>{% translate "Creator" %}</th>
+				<th>{% translate "Executor" %}</th>
+				<th>{% translate "Labels" %}</th>
 			</tr>
 			{% for task in filter.qs %}
 				<tr>
@@ -54,15 +49,10 @@
 						<a class="badge badge-info p-2" href={% url 'tasks:task' task.id %}>"{{ tag }}"</a>
 					{% endfor %}
 					</td>
-					<td>
-						<a class="badge badge-infop-2" href={% url 'tasks:update_task' task.id %}>Изменить</a>
-						<a class="badge badge-infop-2" href={% url 'tasks:delete_task' task.id %}>Удалить</a>
-					</td>
-
 				</tr>
 			{% endfor %}
 		</table>
-
-	<a class="btn btn-primary" href={% url 'tasks:create_task' %}>{% translate "Создать задачу" %}</a>
+	<br>
+	<a class="btn btn-primary" href={% url 'tasks:create_task' %}>{% translate "Create new task" %}</a>
 	</p>
 {% endblock %}

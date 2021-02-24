@@ -11,14 +11,14 @@
 
 {% block welcome %}
 <body class="text-center">
-	<table border="2" align="center">
+	<table border="2" align="center" class="row h-auto mb-4">
 		<tr>
-			<th>Название задачи</th>
-			<th>Статус задачи</th>
-			<th>Инициатор задачи</th>
-			<th>Исполнитель задачи</th>
-			<th>Метки задачи</th>
-			<th>Описание задачи</th>
+			<th>{% translate "Name" %}</th>
+			<th>{% translate "Status" %}</th>
+			<th>{% translate "Creator" %}</th>
+			<th>{% translate "Executor" %}</th>
+			<th>{% translate "Labels" %}</th>
+			<th>{% translate "Description" %}</th>
 		</tr>
 		<tr>
 			<td><p class="lead"> {{ object.name }}</p></td>

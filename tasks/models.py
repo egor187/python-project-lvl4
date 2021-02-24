@@ -3,7 +3,7 @@ from users.models import CustomUser
 
 
 class TaskStatus(models.Model):
-    name = models.CharField('Имя', max_length=70, unique=True)
+    name = models.CharField('Name', max_length=70, unique=True)
 
     def __str__(self):
         return self.name
@@ -16,7 +16,7 @@ class TaskStatus(models.Model):
 
 
 class Label(models.Model):
-    name = models.CharField('Имя', max_length=70, unique=True)
+    name = models.CharField('Name', max_length=70, unique=True)
 
     def __str__(self):
         return self.name
@@ -29,23 +29,22 @@ class Label(models.Model):
 
 
 class Task(models.Model):
-    name = models.CharField('Имя', max_length=50, null=True, blank=True)
+    name = models.CharField('Name', max_length=50, null=True, blank=True)
     description = models.TextField(
-        'Описание',
+        'Description',
         max_length=150,
         null=True,
         blank=True
     )
     status = models.ForeignKey(
         TaskStatus,
-        verbose_name='Статус',
-        null=True,
+        verbose_name='Status',
         blank=True,
         on_delete=models.PROTECT
     )
     creator = models.ForeignKey(
         CustomUser,
-        verbose_name='Автор',
+        verbose_name='Creator',
         on_delete=models.CASCADE,
         null=True,
         blank=True,
@@ -53,7 +52,7 @@ class Task(models.Model):
     )
     executor = models.ForeignKey(
         CustomUser,
-        verbose_name='Исполнитель',
+        verbose_name='Executor',
         on_delete=models.PROTECT,
         null=True, blank=True,
         related_name='executor'
@@ -63,7 +62,7 @@ class Task(models.Model):
         through='RelatedModel',
         through_fields=('task', 'label'),
         blank=True,
-        verbose_name='Метки'
+        verbose_name='Labels'
     )
 
     class Meta():

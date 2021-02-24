@@ -19,8 +19,8 @@
 			<td><p class="lead"> {{ object.name }}</p></td>
 		</tr>
 	</table>
-	<a class="btn btn-primary" href={% url 'update_status' object.id %}>{% translate "Изменить" %}</a>
-	<a class="btn btn-danger" href={% url 'delete_status' object.id %}>{% translate "Удалить" %}</a>
+	<a class="btn btn-primary" href={% url 'update_status' object.id %}>{% translate "Change" %}</a>
+	<a class="btn btn-danger" href={% url 'delete_status' object.id %}>{% translate "Delete" %}</a>
 
 </body>
 {% endblock welcome %}

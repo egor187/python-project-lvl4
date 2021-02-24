@@ -6,7 +6,6 @@ from .models import CustomUser
 class UserViewTest(TestCase):
     def setUp(self):
         credentials = {'username': 'John', 'password': 'aswdqwerty5'}
-        # credentials2 = {'username': 'Bob', 'password': 'aswdqwerty5'}
         CustomUser.objects.create_user(**credentials)
         credentials_login = {'username': 'John', 'password': 'aswdqwerty5'}
         self.client.login(**credentials_login)
