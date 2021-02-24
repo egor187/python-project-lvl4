@@ -11,10 +11,11 @@
 
 {% block welcome %}
 	<h1>Statuses</h1>
-	<table border="2" align="center">
+	<table border="2" align="center" class="h-auto mb-4" cellpadding="7">
 		<tr>
 			<th>Name</th>
 			<th>Linked tasks</th>
+			<th>Config</th>
 		</tr>
 		{% for status in object_list %}
 			<tr>
@@ -24,10 +25,10 @@
 						<a href={% url 'tasks:task' task.pk %}>"{{ task }}"</a>
 					{% endfor %}
 				</td>
-				<th>
+				<td>
 					<a class="btn btn-success" href={% url 'update_status' status.id %}>Change</a>
 					<a class="btn btn-danger" href={% url 'delete_status' status.id %}>Delete</a>
-				</th>
+				</td>
 			</tr>
 
 		{% endfor %}

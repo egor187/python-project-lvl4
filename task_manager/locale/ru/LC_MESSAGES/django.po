@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-24 11:35+0000\n"
+"POT-Creation-Date: 2021-02-24 15:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/templates/labels_index.html:35
+#: task_manager/templates/labels_index.html:36
 msgid "Create new label"
 msgstr "Создать новую метку"
 
@@ -144,7 +144,7 @@ msgstr "Удаление статуса"
 msgid "Status update form"
 msgstr "Изменение статуса"
 
-#: task_manager/templates/statuses_index.html:35
+#: task_manager/templates/statuses_index.html:36
 msgid "Create status"
 msgstr "Создать статус"
 
