@@ -38,8 +38,8 @@ class Task(models.Model):
     )
     status = models.ForeignKey(
         TaskStatus,
+        null=True,
         verbose_name='Status',
-        blank=True,
         on_delete=models.PROTECT
     )
     creator = models.ForeignKey(
