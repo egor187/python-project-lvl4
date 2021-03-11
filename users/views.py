@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import FormView,\
